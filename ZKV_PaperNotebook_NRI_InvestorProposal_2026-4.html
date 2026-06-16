@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZK Ventures — Paper Notebook Manufacturing | International Partner Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --cream: #F4EFE3;
+    --cream-dark: #EDE6D0;
+    --ruled: #C8DDEF;
+    --ruled-faint: #E5F0F8;
+    --margin-red: #B83232;
+    --ink: #1C1C1C;
+    --ink-soft: #2F2F2F;
+    --spine: #1A3A5C;
+    --spine-light: #2B5280;
+    --kraft: #8B6914;
+    --kraft-light: #C49A22;
+    --kraft-bg: #F0E8D0;
+    --gray: #6B6B6B;
+    --light-gray: #B0B0B0;
+    --white: #FDFAF4;
+    --tab-green: #2E6B4F;
+    --tab-teal: #1E5F6B;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #C8B8A0;
+    background-image: repeating-linear-gradient(90deg,transparent,transparent 20px,rgba(0,0,0,0.03) 20px,rgba(0,0,0,0.03) 21px);
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── COPYRIGHT NOTICE ── */
+  .copyright-notice {
+    background: #FFF8E8;
+    border-top: 3px solid var(--kraft);
+    border-bottom: 2px solid var(--kraft-light);
+    padding: 0;
+  }
+  .cn-inner {
+    max-width: 920px; margin: 0 auto;
+    padding: 10px 36px; display: flex; align-items: flex-start; gap: 14px;
+  }
+  .cn-icon {
+    font-size: 22px; font-weight: 700; color: var(--kraft);
+    font-family: 'Playfair Display', serif; flex-shrink: 0; line-height: 1.4;
+  }
+  .cn-text {
+    font-family: 'Courier Prime', monospace; font-size: 10.5px;
+    color: #5a4a20; line-height: 1.65; letter-spacing: 0.2px;
+  }
+  .cn-text strong { color: var(--kraft); }
+
+  /* ── PASSWORD GATE ── */
+  #gate {
+    position:fixed; inset:0;
+    background: linear-gradient(135deg, #1A3A5C 0%, #0a1e36 60%, #1a2e4a 100%);
+    display:flex; align-items:center; justify-content:center;
+    z-index:9999; flex-direction:column;
+    overflow:hidden;
+  }
+  /* Subtle paper texture dots on background */
+  #gate::before {
+    content:'';
+    position:absolute; inset:0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events:none;
+  }
+
+  .gate-notebook {
+    position:relative;
+    width: min(420px, 92vw);
+    background: #fffdf5;
+    border-radius: 3px 10px 10px 3px;
+    box-shadow:
+      -12px 0 0 #0a1e36,
+      -6px 0 0 #152d4a,
+      6px 8px 40px rgba(0,0,0,0.55),
+      18px 18px 0 rgba(0,0,0,0.12);
+    overflow:hidden;
+  }
+
+  /* Red horizontal margin line at top */
+  .gate-notebook::before {
+    content:'';
+    position:absolute; left:0; right:0; top:52px;
+    height:2px; background:var(--margin-red); opacity:0.55;
+    z-index:5;
+  }
+
+  /* Ruled lines across entire notebook page */
+  .gate-notebook::after {
+    content:'';
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent, transparent 31px,
+      #d4e8f5 31px, #d4e8f5 32px
+    );
+    background-position: 0 52px;
+    pointer-events:none; z-index:1;
+  }
+
+  /* Spiral rings on left */
+  .gate-spine {
+    position:absolute; left:-2px; top:0; bottom:0; width:32px;
+    background: linear-gradient(to right, #0a1e36 0%, #1A3A5C 100%);
+    display:flex; flex-direction:column; align-items:center;
+    justify-content:flex-start; padding:20px 0; gap:18px;
+    z-index:10;
+  }
+  .gate-hole {
+    width:16px; height:16px; border-radius:50%;
+    background: linear-gradient(135deg, #2a5080, #0a1e36);
+    border:3px solid #c8b8a0;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1);
+    flex-shrink:0;
+  }
+
+  .gate-content {
+    margin-left:32px;
+    padding:18px 28px 28px 24px;
+    position:relative; z-index:2;
+    min-height:380px;
+    display:flex; flex-direction:column;
+  }
+
+  /* Top label bar */
+  .gate-top-label {
+    font-family:'Courier Prime',monospace; font-size:9px;
+    text-transform:uppercase; letter-spacing:2px;
+    color:rgba(26,58,92,0.45); margin-bottom:14px;
+    padding-bottom:2px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+
+  /* Cursive main title */
+  .gate-heading {
+    font-family:'Dancing Script',cursive;
+    font-size:38px; font-weight:700;
+    color:#1a2a3a;
+    line-height:1.15; margin-bottom:4px;
+    letter-spacing:-0.5px;
+  }
+  .gate-heading span {
+    color: var(--spine);
+  }
+
+  /* Handwritten subtitle */
+  .gate-sub {
+    font-family:'Caveat',cursive;
+    font-size:19px; font-weight:600;
+    color:#2a5080; margin-bottom:6px;
+    line-height:1.3;
+  }
+
+  /* Small handwritten note */
+  .gate-note {
+    font-family:'Caveat',cursive;
+    font-size:15px; color:#7a6a5a;
+    margin-bottom:24px; font-style:italic;
+    line-height:1.4;
+  }
+
+  /* Underline scribble */
+  .gate-scribble {
+    width:80px; height:3px; margin-bottom:20px;
+    background: none;
+    border-bottom:2.5px solid var(--margin-red);
+    border-radius:50%;
+    transform:rotate(-1deg);
+    opacity:0.6;
+  }
+
+  .gate-label {
+    font-family:'Caveat',cursive; font-size:16px;
+    color:var(--spine); margin-bottom:6px;
+    display:block; font-weight:600;
+  }
+  .gate-input {
+    width:100%; padding:10px 14px;
+    border:none; border-bottom:2px solid #c8b8a0;
+    background:transparent;
+    font-family:'Caveat',cursive; font-size:20px;
+    color:var(--ink); outline:none; letter-spacing:4px;
+    transition:border-color 0.2s;
+    border-radius:0;
+  }
+  .gate-input:focus { border-bottom-color:var(--spine); }
+  .gate-input::placeholder { font-size:14px; letter-spacing:6px; color:#c0b8a8; }
+  .gate-btn {
+    margin-top:18px; width:100%; padding:13px;
+    background:var(--spine); color:white; border:none;
+    font-family:'Dancing Script',cursive; font-size:20px;
+    font-weight:700; letter-spacing:0.5px; border-radius:3px;
+    cursor:pointer; transition:background 0.2s, transform 0.1s;
+    box-shadow: 0 3px 10px rgba(26,58,92,0.3);
+  }
+  .gate-btn:hover { background:#2a5080; transform:translateY(-1px); }
+  .gate-btn:active { transform:translateY(0); }
+  .gate-error { margin-top:8px; font-size:13px; color:var(--margin-red); font-family:'Caveat',monospace; text-align:center; min-height:18px; }
+  .gate-footer {
+    margin-top:auto; padding-top:20px;
+    font-family:'Caveat',cursive; font-size:14px;
+    color:#a09880; text-align:right; font-style:italic;
+  }
+
+  /* ── MAIN APP ── */
+  #app { display:none; }
+
+  /* ── STICKY TOP NAV ── */
+  .top-nav {
+    position:sticky; top:0; z-index:500;
+    background:var(--spine);
+    border-bottom:3px solid var(--kraft);
+    padding:0 20px;
+    display:flex; align-items:center; gap:0;
+    overflow-x:auto; white-space:nowrap;
+  }
+  .tnav-brand {
+    font-family:'Playfair Display',serif; font-size:13px; font-weight:700;
+    color:white; padding:10px 16px 10px 0; flex-shrink:0;
+    border-right:1px solid rgba(255,255,255,0.15); margin-right:12px;
+  }
+  .tnav-brand span { color:var(--kraft-light); }
+  .tnav-link {
+    font-family:'Courier Prime',monospace; font-size:10px;
+    text-transform:uppercase; letter-spacing:1.2px;
+    color:rgba(255,255,255,0.65); text-decoration:none;
+    padding:10px 10px; transition:color 0.18s;
+    flex-shrink:0;
+  }
+  .tnav-link:hover { color:var(--kraft-light); }
+  .tnav-div { color:rgba(255,255,255,0.2); font-size:10px; flex-shrink:0; }
+  .tnav-conf {
+    margin-left:auto; font-family:'Courier Prime',monospace;
+    font-size:9px; color:rgba(255,255,255,0.3); letter-spacing:1px;
+    flex-shrink:0; padding-left:16px;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background:var(--spine); padding:28px 36px 24px 36px;
+    position:relative; border-bottom:3px solid var(--kraft);
+  }
+  .ph-eyebrow {
+    font-family:'Courier Prime',monospace; font-size:10px;
+    text-transform:uppercase; letter-spacing:2.5px; color:rgba(255,255,255,0.5);
+    margin-bottom:8px;
+  }
+  .ph-title {
+    font-family:'Playfair Display',serif; font-size:30px;
+    font-weight:700; color:white; line-height:1.2; margin-bottom:6px;
+  }
+  .ph-title em { color:var(--kraft-light); font-style:normal; }
+  .ph-sub { font-size:13px; color:rgba(255,255,255,0.6); font-style:italic; margin-bottom:16px; }
+  .ph-tags { display:flex; gap:8px; flex-wrap:wrap; }
+  .ph-tag {
+    background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18);
+    padding:3px 10px; border-radius:2px;
+    font-family:'Courier Prime',monospace; font-size:10px; color:rgba(255,255,255,0.65); letter-spacing:1px;
+  }
+  .ph-pagenum { position:absolute; top:16px; right:20px; font-family:'Courier Prime',monospace; font-size:9px; color:rgba(255,255,255,0.25); letter-spacing:1px; }
+
+  /* ── NOTEBOOK WRAP ── */
+  .notebook-wrap {
+    max-width:920px; margin:28px auto 60px;
+    background:var(--cream);
+    border-radius:4px 8px 8px 4px;
+    box-shadow:-10px 0 0 #0a1e36,6px 6px 40px rgba(0,0,0,0.3),16px 16px 0 rgba(0,0,0,0.1);
+    position:relative; overflow:hidden;
+  }
+  /* Left spine of notebook */
+  .nb-spine {
+    position:absolute; left:0; top:0; bottom:0; width:40px;
+    background:linear-gradient(to right,#0a1e36,var(--spine));
+    display:flex; flex-direction:column; align-items:center; padding:24px 0; gap:20px; z-index:10;
+  }
+  .nb-ring { width:18px; height:18px; border-radius:50%; border:3px solid #C8B8A0; background:#0a1e36; }
+  .nb-label {
+    writing-mode:vertical-rl; transform:rotate(180deg);
+    font-family:'Courier Prime',monospace; font-size:8px;
+    letter-spacing:3px; color:rgba(255,255,255,0.3);
+    text-transform:uppercase; margin-top:auto; margin-bottom:12px;
+  }
+
+  /* ── DOCUMENT SECTIONS ── */
+  .doc-section {
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .section-inner {
+    padding:36px 40px 32px 68px;
+    background:var(--cream);
+    background-image:
+      linear-gradient(to right, var(--margin-red) 0px, var(--margin-red) 2px, transparent 2px),
+      repeating-linear-gradient(to bottom, transparent, transparent 27px, var(--ruled) 27px, var(--ruled) 28px);
+    background-position:44px 0, 0 0;
+    position:relative;
+  }
+  /* Red top margin line on each section */
+  .section-inner::before {
+    content:'';
+    position:absolute; left:0; right:0; top:0;
+    height:2px; background:var(--margin-red); opacity:0.45;
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-family:'Playfair Display',serif; font-size:21px;
+    font-weight:700; color:var(--spine);
+    padding-bottom:10px; margin-bottom:20px;
+    border-bottom:2px solid var(--ruled); position:relative;
+  }
+  .section-title::before {
+    content:attr(data-num);
+    font-family:'Courier Prime',monospace; font-size:10px;
+    color:var(--kraft); letter-spacing:1px; display:block; margin-bottom:4px;
+  }
+  .section-title .rule-accent { position:absolute; bottom:-2px; left:0; height:2px; width:60px; background:var(--spine); }
+
+  h3 { font-family:'Playfair Display',serif; font-size:15px; font-weight:600; color:var(--spine-light); margin:22px 0 10px; letter-spacing:0.3px; }
+  h4 { font-family:'Source Serif 4',serif; font-size:11px; font-weight:600; color:var(--ink); margin:16px 0 8px; text-transform:uppercase; letter-spacing:1px; }
+  p { font-size:13.5px; line-height:1.85; color:var(--ink-soft); margin-bottom:12px; }
+
+  /* ── CALLOUTS ── */
+  .callout { border-left:4px solid var(--spine); background:rgba(26,58,92,0.05); padding:14px 18px; margin:18px 0; border-radius:0 3px 3px 0; }
+  .callout.kraft { border-left-color:var(--kraft); background:rgba(139,105,20,0.07); }
+  .callout.red { border-left-color:var(--margin-red); background:rgba(184,50,50,0.05); }
+  .callout.green { border-left-color:var(--tab-green); background:rgba(46,107,79,0.06); }
+  .callout p { margin:0; font-size:13px; }
+  .callout-title { font-family:'Courier Prime',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:6px; color:var(--spine); font-weight:700; }
+  .callout.kraft .callout-title { color:var(--kraft); }
+  .callout.red .callout-title { color:var(--margin-red); }
+  .callout.green .callout-title { color:var(--tab-green); }
+
+  /* ── TABLES ── */
+  .tbl-wrap { overflow-x:auto; margin:16px 0; }
+  table { width:100%; border-collapse:collapse; font-size:12.5px; background:var(--white); border:1px solid #D5CCBA; }
+  thead tr { background:var(--spine); color:white; }
+  thead th { padding:10px 14px; text-align:left; font-family:'Courier Prime',monospace; font-size:11px; letter-spacing:0.8px; font-weight:600; }
+  tbody tr { border-bottom:1px solid var(--ruled); }
+  tbody tr:nth-child(even) { background:var(--ruled-faint); }
+  tbody td { padding:9px 14px; color:var(--ink-soft); font-family:'Source Serif 4',serif; }
+  .td-mono { font-family:'Courier Prime',monospace; font-size:12px; }
+  .td-bold { font-weight:600; color:var(--spine); }
+  tfoot tr { background:var(--kraft-bg); }
+  tfoot td { padding:9px 14px; font-weight:700; font-family:'Courier Prime',monospace; font-size:12px; color:var(--spine); border-top:2px solid var(--spine); }
+
+  /* ── STAT CARDS ── */
+  .stat-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(155px,1fr)); gap:12px; margin:18px 0; }
+  .stat-card { background:var(--white); border:1px solid #D5CCBA; border-top:3px solid var(--spine); padding:16px 14px; border-radius:2px; box-shadow:2px 2px 0 rgba(0,0,0,0.06); }
+  .stat-card.kraft { border-top-color:var(--kraft); }
+  .stat-card.red { border-top-color:var(--margin-red); }
+  .stat-card.green { border-top-color:var(--tab-green); }
+  .stat-label { font-family:'Courier Prime',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:1.5px; color:var(--gray); margin-bottom:6px; display:block; }
+  .stat-val { font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--spine); line-height:1; }
+  .stat-card.kraft .stat-val { color:var(--kraft); }
+  .stat-card.red .stat-val { color:var(--margin-red); }
+  .stat-card.green .stat-val { color:var(--tab-green); }
+  .stat-unit { font-family:'Courier Prime',monospace; font-size:11px; color:var(--gray); margin-left:3px; font-weight:400; }
+  .stat-note { font-family:'Source Serif 4',serif; font-size:11px; font-style:italic; color:var(--gray); margin-top:6px; line-height:1.4; }
+
+  /* ── FEATURE GRID ── */
+  .feature-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin:16px 0; }
+  .feature-item { background:var(--white); border:1px solid #D5CCBA; padding:14px; border-radius:2px; border-left:3px solid var(--ruled); }
+  .feature-item.blue { border-left-color:var(--spine); }
+  .feature-item.gold { border-left-color:var(--kraft); }
+  .feature-item.red { border-left-color:var(--margin-red); }
+  .fi-title { font-family:'Playfair Display',serif; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:5px; }
+  .fi-body { font-size:12px; color:var(--gray); line-height:1.55; }
+
+  /* ── TIMELINE ── */
+  .timeline { margin:16px 0; position:relative; padding-left:28px; }
+  .timeline::before { content:''; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:var(--ruled); }
+  .tl-item { position:relative; margin-bottom:18px; }
+  .tl-dot { position:absolute; left:-24px; top:4px; width:14px; height:14px; border-radius:50%; background:var(--spine); border:3px solid var(--cream); box-shadow:0 0 0 1px var(--spine); }
+  .tl-phase { font-family:'Courier Prime',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1.5px; color:var(--kraft); margin-bottom:3px; }
+  .tl-title { font-family:'Playfair Display',serif; font-size:14px; font-weight:600; color:var(--spine); margin-bottom:5px; }
+  .tl-body { font-size:12.5px; color:var(--ink-soft); line-height:1.6; }
+
+  /* ── PRODUCT CARDS ── */
+  .product-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:16px 0; }
+  .product-card { background:var(--white); border:1px solid #D5CCBA; padding:14px 12px; border-radius:2px; text-align:center; }
+  .pc-icon { font-size:26px; margin-bottom:8px; display:block; }
+  .pc-name { font-family:'Playfair Display',serif; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:4px; }
+  .pc-spec { font-family:'Courier Prime',monospace; font-size:10px; color:var(--gray); margin-bottom:8px; }
+  .pc-price { background:var(--spine); color:white; font-family:'Courier Prime',monospace; font-size:11px; padding:3px 8px; border-radius:2px; display:inline-block; }
+
+  /* ── TERMS ── */
+  .terms-block { background:var(--white); border:1.5px solid var(--spine); border-radius:3px; overflow:hidden; margin:20px 0; box-shadow:4px 4px 0 rgba(26,58,92,0.12); }
+  .terms-header { background:var(--spine); color:white; padding:12px 20px; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; }
+  .terms-header .th-sub { font-family:'Courier Prime',monospace; font-size:10px; color:rgba(255,255,255,0.55); letter-spacing:1px; font-weight:400; display:block; margin-top:2px; }
+  .terms-body { padding:20px; }
+  .term-row { display:flex; align-items:flex-start; gap:14px; padding:10px 0; border-bottom:1px solid var(--ruled-faint); }
+  .term-row:last-child { border-bottom:none; }
+  .term-key { font-family:'Courier Prime',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--gray); width:130px; flex-shrink:0; padding-top:1px; }
+  .term-val { font-size:13px; color:var(--ink); line-height:1.6; flex:1; }
+  .term-val strong { color:var(--spine); }
+
+  /* ── COMPARE ── */
+  .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0; }
+  .compare-card { background:var(--white); border:1px solid #D5CCBA; border-radius:2px; overflow:hidden; }
+  .cc-header { padding:10px 14px; font-family:'Courier Prime',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; color:white; }
+  .cc-header.jh { background:var(--spine); }
+  .cc-header.bh { background:var(--tab-teal); }
+  .cc-body { padding:12px 14px; }
+  .cc-row { display:flex; justify-content:space-between; font-size:12px; padding:4px 0; border-bottom:1px solid var(--ruled-faint); color:var(--ink-soft); }
+  .cc-row:last-child { border-bottom:none; }
+  .cc-val { font-family:'Courier Prime',monospace; font-size:11px; color:var(--spine); font-weight:600; }
+
+  /* ── RISK MATRIX ── */
+  .risk-row { display:grid; grid-template-columns:2fr 1fr 1fr 2fr; gap:0; border-bottom:1px solid var(--ruled); font-size:12px; }
+  .risk-row.header { background:var(--spine); color:white; font-family:'Courier Prime',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.8px; }
+  .risk-cell { padding:9px 12px; }
+  .risk-badge { display:inline-block; padding:2px 8px; border-radius:2px; font-family:'Courier Prime',monospace; font-size:9px; text-transform:uppercase; font-weight:700; letter-spacing:1px; }
+  .risk-low { background:#e6f4ec; color:var(--tab-green); }
+  .risk-med { background:#fdf4e3; color:#B57C00; }
+  .risk-high { background:#faeaea; color:var(--margin-red); }
+
+  /* ── PROGRESS BARS ── */
+  .pbar-row { margin:8px 0; }
+  .pbar-label { display:flex; justify-content:space-between; margin-bottom:4px; }
+  .pbar-name { font-family:'Source Serif 4',serif; font-size:12px; color:var(--ink-soft); }
+  .pbar-val { font-family:'Courier Prime',monospace; font-size:11px; color:var(--gray); }
+  .pbar-track { height:8px; background:var(--cream-dark); border-radius:0; }
+  .pbar-fill { height:100%; background:var(--spine); border-radius:0; }
+  .pbar-fill.gold { background:var(--kraft); }
+  .pbar-fill.green { background:var(--tab-green); }
+  .pbar-fill.red { background:var(--margin-red); }
+
+  /* ── MARKET BARS ── */
+  .market-bar-chart { margin:16px 0; }
+  .mbc-row { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+  .mbc-label { font-family:'Source Serif 4',serif; font-size:12px; color:var(--ink-soft); width:130px; flex-shrink:0; text-align:right; }
+  .mbc-track { flex:1; height:22px; background:var(--cream-dark); position:relative; }
+  .mbc-fill { height:100%; background:var(--spine); display:flex; align-items:center; justify-content:flex-end; padding-right:8px; font-family:'Courier Prime',monospace; font-size:10px; color:white; font-weight:700; min-width:40px; }
+  .mbc-fill.gold { background:var(--kraft); }
+  .mbc-fill.green { background:var(--tab-green); }
+  .mbc-fill.teal { background:var(--tab-teal); }
+
+  /* ── COVER HERO ── */
+  .cover-hero {
+    background:var(--spine);
+    margin:-36px -40px 24px -68px;
+    padding:36px 40px 32px 68px;
+    position:relative; overflow:hidden;
+  }
+  .cover-hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background:repeating-linear-gradient(to right,var(--kraft) 0,var(--kraft) 20px,transparent 20px,transparent 25px); }
+  .ch-badge { background:var(--kraft); color:white; font-family:'Courier Prime',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; padding:4px 12px; display:inline-block; margin-bottom:16px; }
+  .ch-main { font-family:'Playfair Display',serif; font-size:34px; font-weight:900; color:white; line-height:1.15; margin-bottom:8px; }
+  .ch-main span { color:var(--kraft-light); }
+  .ch-tagline { font-size:13px; color:rgba(255,255,255,0.65); font-style:italic; margin-bottom:28px; line-height:1.5; }
+  .ch-stats { display:flex; gap:28px; flex-wrap:wrap; }
+  .ch-stat .n { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--kraft-light); display:block; }
+  .ch-stat .l { font-family:'Courier Prime',monospace; font-size:10px; letter-spacing:1.5px; color:rgba(255,255,255,0.5); text-transform:uppercase; }
+
+  /* ── INDEX ── */
+  .idx-group { margin-bottom:22px; }
+  .idx-group-label {
+    font-family:'Courier Prime',monospace; font-size:11px; font-weight:700;
+    letter-spacing:0.12em; text-transform:uppercase; color:white;
+    background:var(--spine); padding:7px 14px; margin-bottom:6px;
+    display:block;
+  }
+  .idx-btn {
+    display:flex; align-items:center; gap:14px;
+    width:100%; background:var(--white);
+    border:1px solid #D5CCBA; border-left:4px solid var(--ruled);
+    padding:12px 16px; margin-bottom:5px;
+    cursor:pointer; text-align:left; text-decoration:none;
+    transition:border-left-color 0.15s, background 0.15s, transform 0.1s;
+    border-radius:2px;
+  }
+  .idx-btn:hover { border-left-color:var(--spine); background:var(--cream); transform:translateX(4px); }
+  .idx-btn.idx-btn-highlight { border-left-color:var(--kraft); background:var(--kraft-bg); }
+  .idx-btn.idx-btn-highlight:hover { border-left-color:var(--kraft-light); background:#e8dfc0; }
+  .idx-num { font-family:'Courier Prime',monospace; font-size:18px; font-weight:700; color:var(--spine); width:34px; flex-shrink:0; text-align:center; line-height:1; }
+  .idx-btn.idx-btn-highlight .idx-num { color:var(--kraft); }
+  .idx-text { flex:1; min-width:0; }
+  .idx-title { font-family:'Playfair Display',serif; font-size:15px; font-weight:600; color:var(--ink); display:block; line-height:1.3; }
+  .idx-desc { font-family:'Source Serif 4',serif; font-size:12px; color:var(--gray); display:block; margin-top:3px; line-height:1.4; }
+  .idx-arrow { font-size:18px; color:var(--light-gray); flex-shrink:0; transition:color 0.15s, transform 0.15s; }
+  .idx-btn:hover .idx-arrow { color:var(--spine); transform:translateX(3px); }
+
+  /* ── BACK TO INDEX ── */
+  .back-to-index-wrap { border-top:1.5px dashed var(--ruled); padding-top:20px; margin-top:32px; }
+  .back-to-index {
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:12px 20px; width:100%;
+    background:var(--cream-dark); border:1.5px solid var(--ruled); border-left:4px solid var(--spine);
+    font-family:'Courier Prime',monospace; font-size:12px; font-weight:700; letter-spacing:0.08em;
+    color:var(--spine); text-decoration:none; border-radius:2px;
+    transition:background 0.18s, border-left-color 0.18s, color 0.18s;
+  }
+  .back-to-index:hover { background:var(--cream); border-left-color:var(--kraft); color:var(--kraft); }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    background:var(--spine); padding:10px 36px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;
+    font-family:'Courier Prime',monospace; font-size:9.5px; color:rgba(255,255,255,0.4);
+    letter-spacing:0.8px;
+  }
+  .pf-brand { color:rgba(255,255,255,0.7); font-weight:700; }
+  .pf-conf { color:var(--kraft); font-style:italic; }
+
+  /* ── UTILITY ── */
+  .highlight { background:rgba(196,154,34,0.18); padding:1px 3px; }
+  .mono { font-family:'Courier Prime',monospace; }
+  ul { padding-left:18px; margin-bottom:12px; }
+  li { font-size:13px; line-height:1.7; color:var(--ink-soft); margin-bottom:3px; }
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+
+  @media(max-width:680px) {
+    .notebook-wrap { margin:0; border-radius:0; box-shadow:none; }
+    .nb-spine { display:none; }
+    .section-inner { padding:24px 20px 24px 20px; background-image:none; }
+    .cover-hero { margin:-24px -20px 20px -20px; padding:24px 20px; }
+    .ch-main { font-size:24px; }
+    .page-header { padding:20px; }
+    .ph-title { font-size:22px; }
+    .two-col { grid-template-columns:1fr; }
+    .compare-grid { grid-template-columns:1fr; }
+    .risk-row { grid-template-columns:1fr 1fr; }
+    .top-nav { padding:0 12px; }
+    .tnav-conf { display:none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ════ PASSWORD GATE ════ -->
+<div id="gate">
+  <div class="gate-notebook">
+    <div class="gate-spine">
+      <div class="gate-hole"></div><div class="gate-hole"></div><div class="gate-hole"></div>
+      <div class="gate-hole"></div><div class="gate-hole"></div><div class="gate-hole"></div>
+      <div class="gate-hole"></div><div class="gate-hole"></div>
+    </div>
+    <div class="gate-content">
+      <div class="gate-top-label">
+        <span>ZK Ventures · Confidential</span>
+        <span>ZKV/PNB/2026</span>
+      </div>
+      <div class="gate-heading">Paper <span>Notebook</span></div>
+      <div class="gate-sub">Manufacturing · Investment Proposal</div>
+      <div class="gate-scribble"></div>
+      <div class="gate-note">International Partner Briefing · June 2026</div>
+      <label class="gate-label" for="pwInput">✎ &nbsp;Enter document password</label>
+      <input class="gate-input" type="password" id="pwInput" placeholder="· · · · · ·" autocomplete="off">
+      <button class="gate-btn" onclick="checkPass()">Open Document →</button>
+      <div class="gate-error" id="pwError"></div>
+      <div class="gate-footer">Password protected · Confidential</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ MAIN APP ════ -->
+<div id="app">
+
+  <!-- STICKY NAV -->
+  <nav class="top-nav">
+    <div class="tnav-brand">ZK <span>Ventures</span></div>
+    <a class="tnav-link" href="#sec-cover">Summary</a>
+    <span class="tnav-div">|</span>
+    <a class="tnav-link" href="#sec-index">Index</a>
+    <span class="tnav-div">|</span>
+    <a class="tnav-link" href="#sec-market">Market</a>
+    <span class="tnav-div">|</span>
+    <a class="tnav-link" href="#sec-investment">Financials</a>
+    <span class="tnav-div">|</span>
+    <a class="tnav-link" href="#sec-investor">Partner Proposal</a>
+    <span class="tnav-div">|</span>
+    <a class="tnav-link" href="#sec-terms">Terms</a>
+    <span class="tnav-div">|</span>
+    <a class="tnav-link" href="#sec-contact">Contact</a>
+    <span class="tnav-conf">CONFIDENTIAL · ZKV/PNB/2026</span>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="ph-eyebrow">ZK Ventures · Jamshedpur · MSME Registered</div>
+    <div class="ph-title">Paper <em>Notebook</em> Manufacturing<br>International Partner Proposal</div>
+    <div class="ph-sub">A comprehensive feasibility report and investment proposal for international silent financiers</div>
+    <div class="ph-tags">
+      <span class="ph-tag">Prepared: June 2026</span>
+      <span class="ph-tag">Capital Required: ₹12 Lakh</span>
+      <span class="ph-tag">ROI: 18–24 Months</span>
+      <span class="ph-tag">2 International Partners Sought</span>
+    </div>
+    <div class="ph-pagenum">CONFIDENTIAL · ZKV/PNB/2026</div>
+  </div>
+
+
+  <!-- COPYRIGHT NOTICE -->
+  <div class="copyright-notice">
+    <div class="cn-inner">
+      <span class="cn-icon">©</span>
+      <div class="cn-text">
+        <strong>Copyright & Ownership Notice</strong> — This document is the exclusive intellectual and digital property of <strong>ZK Ventures, Jamshedpur, India</strong>. Considerable time, research, and effort have been invested in preparing this Feasibility Report. Unauthorised reproduction, distribution, sharing, or plagiarism of any part of this document — in whole or in part, in any medium — without the prior written consent of ZK Ventures is strictly prohibited. This report is intended solely for the named recipient(s). If received in error, please notify ZK Ventures immediately and destroy all copies.
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTEBOOK WRAPPER -->
+  <div class="notebook-wrap">
+    <div class="nb-spine">
+      <div class="nb-ring"></div><div class="nb-ring"></div><div class="nb-ring"></div>
+      <div class="nb-ring"></div><div class="nb-ring"></div><div class="nb-ring"></div>
+      <div class="nb-ring"></div><div class="nb-ring"></div>
+      <div class="nb-label">ZK Ventures · Paper Notebook · Partner Proposal · 2026</div>
+    </div>
+
+
+    <!-- ── SEC-COVER ── -->
+    <div class="doc-section" id="sec-cover">
+      <div class="section-inner">
+
+      <div class="cover-hero">
+        <div class="ch-badge">◎ International Partner Opportunity · 2026</div>
+        <div class="ch-main">Manufacturing<br><span>India's Most Essential</span><br>Stationery Product</div>
+        <div class="ch-tagline">"Every school, every office, every desk — notebooks never go out of demand."</div>
+        <div class="ch-stats">
+          <div class="ch-stat"><span class="n">₹76B</span><span class="l">Global Market 2025</span></div>
+          <div class="ch-stat"><span class="n">75%</span><span class="l">Unorganized Market Share</span></div>
+          <div class="ch-stat"><span class="n">₹6L</span><span class="l">Each International Partner</span></div>
+          <div class="ch-stat"><span class="n">3×</span><span class="l">Return Exit Trigger</span></div>
+        </div>
+      </div>
+
+      <div class="cover-body">
+        <div class="section-title" data-num="SECTION 01">Executive Summary<div class="rule-accent"></div></div>
+
+        <p>ZK Ventures — a GST-registered, Udyam-certified MSME based in Jamshedpur — is establishing a <strong>paper notebook manufacturing unit</strong> at the JIADA Adityapur Industrial Area. The unit will produce ruled exercise books, long books, primary note books, and corporate stationery, targeting schools, educational institutions, government procurement, and Gulf export markets.</p>
+
+        <p>This proposal invites <strong>two international silent partners</strong>, each contributing ₹6 lakh (total ₹12 lakh), as interest-free working capital partners. In return, each partner receives a <strong>30% share of net monthly profits</strong> until achieving a 3× return on their individual contribution, after which their participation automatically concludes and full ownership vests in ZK Ventures.</p>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <span class="stat-label">Total Capital Required</span>
+            <div class="stat-val">₹15L<span class="stat-unit">total</span></div>
+            <div class="stat-note">₹12L international + ₹3L promoter</div>
+          </div>
+          <div class="stat-card green">
+            <span class="stat-label">Each Partner Contribution</span>
+            <div class="stat-val">₹6L</div>
+            <div class="stat-note">Silent, interest-free, profit-sharing</div>
+          </div>
+          <div class="stat-card kraft">
+            <span class="stat-label">Daily Production</span>
+            <div class="stat-val">2,000<span class="stat-unit">units</span></div>
+            <div class="stat-note">At scale (Month 6+)</div>
+          </div>
+          <div class="stat-card red">
+            <span class="stat-label">Monthly Net Profit</span>
+            <div class="stat-val">₹1.2L<span class="stat-unit">–1.8L</span></div>
+            <div class="stat-note">Stabilized Year 1</div>
+          </div>
+        </div>
+
+        <div class="callout green">
+          <div class="callout-title">Why Paper Notebooks — Right Now?</div>
+          <p>India has 25+ crore school students. Government education schemes guarantee institutional demand every year. The notebook segment is 75% unorganized — a clear space for a quality regional brand. And Jamshedpur's proximity to Durgapur/Kolkata paper mills gives ZK Ventures a raw material cost advantage over competitors in UP or Delhi NCR.</p>
+        </div>
+
+        <h3>What Makes This Opportunity Different</h3>
+        <div class="feature-grid">
+          <div class="feature-item blue">
+            <div class="fi-title">Evergreen Demand</div>
+            <div class="fi-body">Notebooks are among the most non-negotiable purchases in any Indian household with school-going children. Demand is immune to digital disruption at the student level in Tier 2–4 markets.</div>
+          </div>
+          <div class="feature-item gold">
+            <div class="fi-title">75% Market is Unorganized</div>
+            <div class="fi-body">National brands like Classmate and Navneet only hold 25% of India's notebook market. The remaining 75% is served by local and Chinese products — the exact gap ZK Ventures targets.</div>
+          </div>
+          <div class="feature-item blue">
+            <div class="fi-title">Government Tender Access</div>
+            <div class="fi-body">MSME/Udyam registration gives ZK Ventures direct eligibility for JEPC (Jharkhand), SSA, and Bihar Education Project stationery tenders — guaranteed bulk orders at fixed prices.</div>
+          </div>
+          <div class="feature-item gold">
+            <div class="fi-title">Export to Gulf Markets</div>
+            <div class="fi-body">The MEA stationery market is $17.1B and growing. Indian manufacturers are competitive on price. By Year 2–3 (after 50% ROI), ZK Ventures activates Gulf exports to UAE, Qatar, Saudi Arabia, and Bahrain — all prepaid.</div>
+          </div>
+        </div>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">📋 &nbsp; View Full Index — All 19 Sections →</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-INDEX ── -->
+    <div class="doc-section" id="sec-index">
+      <div class="section-inner">
+
+        <div class="section-title" data-num="TABLE OF CONTENTS">Document Index<div class="rule-accent"></div></div>
+        <p style="margin-bottom:24px;font-size:13.5px;color:var(--ink-soft);">Tap any section below to jump directly. Use <strong>↩ Back to Index</strong> at the end of each section to return here.</p>
+
+        <div class="idx-group">
+          <div class="idx-group-label">◈ Overview</div>
+          <a href="#sec-cover" class="idx-btn">
+            <span class="idx-num">01</span>
+            <div class="idx-text">
+              <span class="idx-title">Executive Summary</span>
+              <span class="idx-desc">Investment snapshot, key numbers, opportunity overview</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-venture" class="idx-btn">
+            <span class="idx-num">02</span>
+            <div class="idx-text">
+              <span class="idx-title">About ZK Ventures</span>
+              <span class="idx-desc">Promoter profile, MSME registrations, existing operations</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="idx-group">
+          <div class="idx-group-label">◈ Market Analysis</div>
+          <a href="#sec-market" class="idx-btn">
+            <span class="idx-num">03</span>
+            <div class="idx-text">
+              <span class="idx-title">Global & India Market</span>
+              <span class="idx-desc">$76B global market, India CAGR, max selling potential by channel</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-demand" class="idx-btn">
+            <span class="idx-num">04</span>
+            <div class="idx-text">
+              <span class="idx-title">Demand Drivers</span>
+              <span class="idx-desc">Education sector, govt schemes, coaching culture, office demand</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-export" class="idx-btn">
+            <span class="idx-num">05</span>
+            <div class="idx-text">
+              <span class="idx-title">Export Opportunity</span>
+              <span class="idx-desc">Gulf markets, MEA stationery, export strategy & certification</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="idx-group">
+          <div class="idx-group-label">◈ Business Model</div>
+          <a href="#sec-products" class="idx-btn">
+            <span class="idx-num">06</span>
+            <div class="idx-text">
+              <span class="idx-title">Product Range</span>
+              <span class="idx-desc">Notebook types, GSM grades, SKUs and pricing tiers</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-machinery" class="idx-btn">
+            <span class="idx-num">07</span>
+            <div class="idx-text">
+              <span class="idx-title">Machinery & Setup</span>
+              <span class="idx-desc">Equipment list, automation levels, supplier sources, space</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-raw" class="idx-btn">
+            <span class="idx-num">08</span>
+            <div class="idx-text">
+              <span class="idx-title">Raw Materials</span>
+              <span class="idx-desc">Paper grades, cover board, inks, sourcing from Durgapur/Kolkata</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-location" class="idx-btn">
+            <span class="idx-num">09</span>
+            <div class="idx-text">
+              <span class="idx-title">Factory Location</span>
+              <span class="idx-desc">Jharkhand vs Bihar analysis, JIADA Adityapur advantage</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="idx-group">
+          <div class="idx-group-label">◈ Financials</div>
+          <a href="#sec-investment" class="idx-btn">
+            <span class="idx-num">10</span>
+            <div class="idx-text">
+              <span class="idx-title">Investment Plan</span>
+              <span class="idx-desc">Three scales, full capex breakdown, working capital needs</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-pnl" class="idx-btn">
+            <span class="idx-num">11</span>
+            <div class="idx-text">
+              <span class="idx-title">P&L Projections</span>
+              <span class="idx-desc">Monthly revenue, expenses, net profit, Year 1–3 forecast</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-roi" class="idx-btn">
+            <span class="idx-num">12</span>
+            <div class="idx-text">
+              <span class="idx-title">ROI & Break-Even</span>
+              <span class="idx-desc">Payback period, investor return timeline, sensitivity analysis</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="idx-group">
+          <div class="idx-group-label">◈ International Partnership</div>
+          <a href="#sec-why-invest" class="idx-btn idx-btn-highlight">
+            <span class="idx-num">12B</span>
+            <div class="idx-text">
+              <span class="idx-title">Why Gulf Diaspora Should Invest in India</span>
+              <span class="idx-desc">Currency advantage, affordable costs, Gulf-India relations, pros & cons</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-investor" class="idx-btn idx-btn-highlight">
+            <span class="idx-num">13</span>
+            <div class="idx-text">
+              <span class="idx-title">Investor Proposal</span>
+              <span class="idx-desc">Silent partner model, ₹6L each, quarterly profit sharing, tiered reinvestment</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-terms" class="idx-btn idx-btn-highlight">
+            <span class="idx-num">14</span>
+            <div class="idx-text">
+              <span class="idx-title">Terms & Conditions</span>
+              <span class="idx-desc">Full T&C, Agreement clauses, exit trigger, legal protections</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-subsidies" class="idx-btn">
+            <span class="idx-num">15</span>
+            <div class="idx-text">
+              <span class="idx-title">Govt. Subsidies</span>
+              <span class="idx-desc">PMEGP, Jharkhand MSME Policy, CGTMSE, GeM eligibility</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-competition" class="idx-btn">
+            <span class="idx-num">16</span>
+            <div class="idx-text">
+              <span class="idx-title">Competition</span>
+              <span class="idx-desc">National brands, local players, ZK Ventures positioning</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-risks" class="idx-btn">
+            <span class="idx-num">17</span>
+            <div class="idx-text">
+              <span class="idx-title">Risk Analysis</span>
+              <span class="idx-desc">Key risks, likelihood rating, mitigation measures</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-roadmap" class="idx-btn">
+            <span class="idx-num">18</span>
+            <div class="idx-text">
+              <span class="idx-title">Roadmap</span>
+              <span class="idx-desc">Phase-wise 24-month execution plan from setup to export</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+          <a href="#sec-contact" class="idx-btn">
+            <span class="idx-num">19</span>
+            <div class="idx-text">
+              <span class="idx-title">Contact</span>
+              <span class="idx-desc">Promoter details, next steps, WhatsApp / call</span>
+            </div>
+            <span class="idx-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="callout green" style="margin-top:8px;">
+          <div class="callout-title">Navigation Tip</div>
+          <p>Use the sticky top bar to jump by group, or scroll continuously through the full document.</p>
+        </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-VENTURE ── -->
+    <div class="doc-section" id="sec-venture">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 02">About ZK Ventures<div class="rule-accent"></div></div>
+
+      <p>ZK Ventures is an entrepreneur-led enterprise based in Jamshedpur, with active business operations in manpower contracting, site services, and manufacturing. The firm is professionally registered and legally compliant across all applicable frameworks.</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Detail</th><th>Particulars</th></tr></thead>
+          <tbody>
+            <tr><td>Legal Name</td><td class="td-bold">ZK Ventures (MSME Registered)</td></tr>
+            <tr><td>Location</td><td>Jamshedpur — East India</td></tr>
+            <tr><td>GST Registration</td><td class="td-mono">Active — Jharkhand GSTIN</td></tr>
+            <tr><td>Udyam/MSME</td><td class="td-mono">Registered — Micro Enterprise</td></tr>
+            <tr><td>Existing Operations</td><td>Manpower contracting at Tata Steel UISL Golmuri; Interior fit-out services</td></tr>
+            <tr><td>Planned Units</td><td>Paper Notebook Manufacturing · Areca Leaf Plate Manufacturing</td></tr>
+            <tr><td>Industrial Zone</td><td>JIADA Adityapur / Gamharia, Jharkhand</td></tr>
+            <tr><td>Banking</td><td>Current account with operational transaction history</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout kraft">
+        <div class="callout-title">Promoter's Edge</div>
+        <p>ZK Ventures operates across multiple ventures simultaneously — this is a deliberate asset. The manpower contracting business provides steady monthly cash flow that de-risks the notebook unit's early months. Infrastructure overhead (GST, MSME, accounting) is already absorbed — the notebook unit starts lean.</p>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-MARKET ── -->
+    <div class="doc-section" id="sec-market">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 03">Global & India Market<div class="rule-accent"></div></div>
+
+      <h3>Global Notebook Market — Scale & Trajectory</h3>
+      <p>The paper notebook is not a dying product. It is a <strong>$76+ billion global market</strong> that is actively expanding, pivoting toward premium, eco-friendly, and institutional segments. Despite digitization, the cognitive benefits of handwriting, the cost constraints of tablets in developing markets, and the sheer scale of the global student population continue to sustain robust demand.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-label">Global Market 2025</span>
+          <div class="stat-val">$76.3B</div>
+          <div class="stat-note">Full stationery + notebooks category</div>
+        </div>
+        <div class="stat-card green">
+          <span class="stat-label">Projected 2030</span>
+          <div class="stat-val">$89.7B</div>
+          <div class="stat-note">CAGR 3.3% — steady, resilient</div>
+        </div>
+        <div class="stat-card kraft">
+          <span class="stat-label">Notebooks Segment 2024</span>
+          <div class="stat-val">$4.14B</div>
+          <div class="stat-note">Growing at 3.77% CAGR to 2033</div>
+        </div>
+        <div class="stat-card red">
+          <span class="stat-label">Asia-Pacific Share</span>
+          <div class="stat-val">47%</div>
+          <div class="stat-note">India + China = dominant hub</div>
+        </div>
+      </div>
+
+      <h3>India — The Core Market</h3>
+      <p>India is the single most important market for ZK Ventures. The numbers are compelling across every dimension: population scale, education infrastructure investment, rising disposable income, and deliberate government push toward Universal Elementary Education.</p>
+
+      <div class="market-bar-chart">
+        <div class="mbc-row">
+          <div class="mbc-label">Indian Paper Mkt 2024</div>
+          <div class="mbc-track"><div class="mbc-fill" style="width:55%">$4.69B</div></div>
+        </div>
+        <div class="mbc-row">
+          <div class="mbc-label">Indian Paper Mkt 2032</div>
+          <div class="mbc-track"><div class="mbc-fill gold" style="width:100%">$11.32B (est.)</div></div>
+        </div>
+        <div class="mbc-row">
+          <div class="mbc-label">India CAGR 2025–32</div>
+          <div class="mbc-track"><div class="mbc-fill green" style="width:90%">13.4% — Fastest Growing</div></div>
+        </div>
+        <div class="mbc-row">
+          <div class="mbc-label">School Students (India)</div>
+          <div class="mbc-track"><div class="mbc-fill teal" style="width:85%">25+ Crore</div></div>
+        </div>
+        <div class="mbc-row">
+          <div class="mbc-label">Unorganized Mkt Share</div>
+          <div class="mbc-track"><div class="mbc-fill" style="width:75%">75% — Open for Regional Brands</div></div>
+        </div>
+      </div>
+
+      <h3>Maximum Selling Potential — Realistic Assessment</h3>
+      <p>Understanding the realistic ceiling of what ZK Ventures can sell — broken down by channel and geography — is essential for investor confidence. The following analysis maps from conservative to optimistic.</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Sales Channel</th><th>Monthly Volume Potential</th><th>Avg. Selling Price</th><th>Monthly Revenue</th><th>Realistic Timeline</th></tr></thead>
+          <tbody>
+            <tr><td>Local school direct supply (Jamshedpur zone)</td><td class="td-mono">8,000–12,000 units</td><td class="td-mono">₹16–20</td><td class="td-bold">₹1.3–2.4L</td><td>Month 3–6</td></tr>
+            <tr><td>Wholesale to stationery distributors</td><td class="td-mono">10,000–18,000 units</td><td class="td-mono">₹12–15</td><td class="td-bold">₹1.2–2.7L</td><td>Month 4–8</td></tr>
+            <tr><td>Govt. tenders (JEPC/SSA Jharkhand)</td><td class="td-mono">15,000–40,000 units/tender</td><td class="td-mono">₹14–18</td><td class="td-bold">₹2.1–7.2L</td><td>Year 1–2</td></tr>
+            <tr><td>Bihar market (Chapra, Patna, Muzaffarpur)</td><td class="td-mono">10,000–25,000 units</td><td class="td-mono">₹13–17</td><td class="td-bold">₹1.3–4.2L</td><td>Year 1–2</td></tr>
+            <tr><td>Corporate/office stationery</td><td class="td-mono">3,000–8,000 units</td><td class="td-mono">₹25–45</td><td class="td-bold">₹75K–3.6L</td><td>Year 1–3</td></tr>
+            <tr><td>Online (Amazon B2B, IndiaMart)</td><td class="td-mono">2,000–6,000 units</td><td class="td-mono">₹18–28</td><td class="td-bold">₹36K–1.68L</td><td>Year 2</td></tr>
+            <tr><td>Gulf export (UAE/Saudi via aggregator)</td><td class="td-mono">20,000–50,000 units</td><td class="td-mono">₹22–35</td><td class="td-bold">₹4.4–17.5L</td><td>Year 2–3</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="2">Peak Combined Monthly Revenue Potential (Year 3)</td><td colspan="3">₹15–35 Lakh/month at scale</td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="callout kraft">
+        <div class="callout-title">Key Insight: Seasonal Spike</div>
+        <p>India's back-to-school season (April–July) generates 60–70% of annual notebook sales. A single season's institutional order from 20 schools can equal 3–4 months of regular production. Building institutional relationships before season is the critical success factor — and ZK Ventures' MSME registration enables this from Day 1.</p>
+      </div>
+
+      <h3>India Notebook Market — Organized vs Unorganized</h3>
+      <div class="pbar-row">
+        <div class="pbar-label"><span class="pbar-name">Unorganized / Regional Players (Local + Chinese)</span><span class="pbar-val">75%</span></div>
+        <div class="pbar-track"><div class="pbar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="pbar-row">
+        <div class="pbar-label"><span class="pbar-name">ITC Classmate</span><span class="pbar-val">~12%</span></div>
+        <div class="pbar-track"><div class="pbar-fill gold" style="width:12%"></div></div>
+      </div>
+      <div class="pbar-row">
+        <div class="pbar-label"><span class="pbar-name">Navneet / Youva</span><span class="pbar-val">~8%</span></div>
+        <div class="pbar-track"><div class="pbar-fill green" style="width:8%"></div></div>
+      </div>
+      <div class="pbar-row">
+        <div class="pbar-label"><span class="pbar-name">Others (DOMS, Sundaram, etc.)</span><span class="pbar-val">~5%</span></div>
+        <div class="pbar-track"><div class="pbar-fill red" style="width:5%"></div></div>
+      </div>
+      <p style="font-size:12px;font-style:italic;color:var(--gray);margin-top:8px;">ZK Ventures competes in the 75% unorganized space — the most accessible and price-competitive segment.</p>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-DEMAND ── -->
+    <div class="doc-section" id="sec-demand">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 04">Demand Drivers<div class="rule-accent"></div></div>
+
+      <p>Notebook demand in India is structural, not cyclical. It is driven by compulsory education law, government school programs, literacy expansion, coaching culture, and growing office stationery consumption. Here is a comprehensive view of every demand vector that ZK Ventures can tap.</p>
+
+      <h3>Education Sector — The Foundation</h3>
+      <div class="feature-grid">
+        <div class="feature-item blue">
+          <div class="fi-title">RTE Act 2009</div>
+          <div class="fi-body">Right to Education mandates free and compulsory education for all 6–14 year olds. India has 25+ crore school students — each requires 12–18 notebooks per academic year.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">Samagra Shiksha Abhiyan</div>
+          <div class="fi-body">Government of India's flagship school education scheme includes stationery provisioning. States procure notebooks at scale for distribution to BPL students — massive tender volumes.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">Higher Education Surge</div>
+          <div class="fi-body">India's higher education enrollment grew from 3.42 crore (FY15) to 4.33 crore (FY22) — a 26.5% increase — directly expanding demand for notebooks, registers, and lab books.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">Coaching Centre Boom</div>
+          <div class="fi-body">India's ₹58,000 crore coaching industry (Kota, Patna, Jamshedpur) consumes enormous quantities of notebooks, practice books, and revision pads — often outside school supply chains.</div>
+        </div>
+      </div>
+
+      <h3>Regional Demand — Jharkhand & Bihar</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>State</th><th>School Students</th><th>Private Schools</th><th>Coaching Centers</th><th>Notebook Demand/Year (Est.)</th></tr></thead>
+          <tbody>
+            <tr><td>Jharkhand</td><td class="td-mono">~70 lakh</td><td class="td-mono">4,000+</td><td class="td-mono">Growing rapidly</td><td class="td-bold">10–15 crore units</td></tr>
+            <tr><td>Bihar</td><td class="td-mono">~250 lakh</td><td class="td-mono">15,000+</td><td class="td-mono">Patna, Muzaffarpur hubs</td><td class="td-bold">35–45 crore units</td></tr>
+            <tr><td>West Bengal (adjacent)</td><td class="td-mono">~150 lakh</td><td class="td-mono">10,000+</td><td class="td-mono">Kolkata, Durgapur</td><td class="td-bold">20–30 crore units</td></tr>
+            <tr><td>Odisha (adjacent)</td><td class="td-mono">~80 lakh</td><td class="td-mono">5,000+</td><td class="td-mono">Bhubaneswar hub</td><td class="td-bold">12–18 crore units</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="4">Total Accessible Regional Market</td><td>77–108 crore units/year</td></tr></tfoot>
+        </table>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">ZK Ventures' Realistic Capture at Scale</div>
+        <p>Capturing even 0.01% of the Jharkhand+Bihar market = 4.5–6 lakh notebooks per year = a healthy single-factory production load. At 0.05% capture, it's 22–30 lakh units — requiring factory expansion, which is a good problem to have.</p>
+      </div>
+
+      <h3>Office & Corporate Demand</h3>
+      <p>Beyond students, India's rapidly expanding office economy — driven by IT parks, manufacturing growth, and services sector — generates steady year-round demand for corporate stationery: registers, notepads, visitor books, attendance registers, and premium branded notebooks. This segment is less seasonal, higher-margin, and often serves bulk institutional buyers (factories, hospitals, banks).</p>
+      <p>Jamshedpur's TATA Steel ecosystem alone has 30,000+ employees and multiple ancillary units that consume corporate stationery year-round — a captive adjacent market ZK Ventures can directly approach through its existing industry contacts.</p>
+
+      <h3>Government Institutional Demand</h3>
+      <div class="feature-grid">
+        <div class="feature-item gold">
+          <div class="fi-title">JEPC Jharkhand</div>
+          <div class="fi-body">Jharkhand Education Project Council procures stationery at scale for government schools. MSME-registered suppliers receive preference under public procurement policy (mandatory 25% from MSMEs).</div>
+        </div>
+        <div class="feature-item gold">
+          <div class="fi-title">Bihar Education Project</div>
+          <div class="fi-body">Bihar's BEP and SSA procurement is among the largest in India by volume — Bihar has India's highest student density per km². Annual notebook tenders are in crore-unit quantities.</div>
+        </div>
+        <div class="feature-item gold">
+          <div class="fi-title">Defence / PSU Supply</div>
+          <div class="fi-body">GeM (Government e-Marketplace) allows MSME manufacturers to list and supply stationery to central government departments, PSUs, and defence canteens without competitive bidding above ₹1 lakh.</div>
+        </div>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-EXPORT ── -->
+    <div class="doc-section" id="sec-export">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 05">Gulf Export Opportunity<div class="rule-accent"></div></div>
+
+      <p>While the domestic market remains the primary revenue engine in Years 1–2, ZK Ventures has identified the Gulf region as a focused, high-value export channel to be activated after achieving 50% ROI domestically. Export is treated as a disciplined Phase 2 — not a distraction from core operations. Target markets: <strong>UAE, Qatar, Saudi Arabia, and Bahrain</strong>.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-label">Middle East Stationery Market</span>
+          <div class="stat-val">$8.5B</div>
+          <div class="stat-note">Gulf region standalone, 2025 estimate</div>
+        </div>
+        <div class="stat-card green">
+          <span class="stat-label">Gulf Market Growth</span>
+          <div class="stat-val">4.1%</div>
+          <div class="stat-note">CAGR driven by education expansion</div>
+        </div>
+        <div class="stat-card kraft">
+          <span class="stat-label">Paper Products Share</span>
+          <div class="stat-val">37%</div>
+          <div class="stat-note">Largest stationery sub-category</div>
+        </div>
+        <div class="stat-card red">
+          <span class="stat-label">Indian Expats in Gulf</span>
+          <div class="stat-val">9M+</div>
+          <div class="stat-note">UAE, Saudi, Qatar, Bahrain combined</div>
+        </div>
+      </div>
+
+      <h3>Why Gulf Markets Work for ZK Ventures</h3>
+      <div class="feature-grid">
+        <div class="feature-item blue">
+          <div class="fi-title">Massive Indian Diaspora</div>
+          <div class="fi-body">UAE alone has 3.5M+ Indian residents. Saudi Arabia 2.5M+. Qatar and Bahrain combined 700K+. Many run retail, wholesale, and distribution businesses — creating natural buyer networks for Indian-made goods with minimal cold outreach.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">ZK Ventures' Partners as Export Bridge</div>
+          <div class="fi-body">Our international partners — Gulf-based themselves — are the single most valuable export asset. Their local business contacts can directly introduce ZK Ventures notebooks to Gulf stationery buyers, bypassing expensive trade shows in Year 1.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">Growing Gulf Education Sector</div>
+          <div class="fi-body">UAE, Qatar, and Saudi Arabia are expanding school infrastructure for growing expat and local populations. Indian-syllabus notebooks (CBSE format, four-line primary books) are in active demand in Indian-school networks across all four target countries.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">Haldia Port — Strategic Advantage</div>
+          <div class="fi-body">Jamshedpur to Haldia Port is 275 km — one of India's closest inland manufacturing hubs to a major international export port. Sea freight to Dubai: 8–12 days. To Dammam: 10–14 days. To Doha: 12–16 days.</div>
+        </div>
+      </div>
+
+      <h3>Export Channel Strategy (After 50% ROI)</h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 1 · Parallel to Domestic Operations</div>
+          <div class="tl-title">EEPC India & RCMC Registration</div>
+          <div class="tl-body">Register with EEPC India, obtain RCMC Certificate — mandatory for export incentives under FTP 2023. Cost: ₹5,000–10,000. This is done in Year 1 so export infrastructure is ready when the 50% ROI milestone is hit.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 2 · Partner Network Activation</div>
+          <div class="tl-title">Reference-Based Gulf Outreach</div>
+          <div class="tl-body">International partners leverage their Gulf business contacts to introduce ZK Ventures products to stationery wholesalers, Indian school supply chains, and retail distributors in UAE, Qatar, Saudi, and Bahrain. This costs nothing — relationship-driven outreach with the highest conversion rate.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 3 · First Export Order</div>
+          <div class="tl-title">Prepaid FOB Contract — No Credit</div>
+          <div class="tl-body">All export orders are accepted on <strong>100% prepaid basis only</strong> — no credit, no deferred payment. Minimum first order: 1 FCL (15,000–20,000 notebooks). At export price ₹30–40/unit, one FCL generates ₹4.5–8 lakh revenue per shipment.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 4 · Scale</div>
+          <div class="tl-title">Paperworld Middle East (Dubai) — Year 3</div>
+          <div class="tl-body">Annual B2B trade show in Dubai for paper and stationery industry. ZK Ventures exhibits as an MSME manufacturer — direct connections with Gulf distributors and retail chains to build repeat order pipeline.</div>
+        </div>
+      </div>
+
+      <div class="callout kraft">
+        <div class="callout-title">Export Discipline — Key Policy</div>
+        <p>Export will be activated only after domestic operations achieve 50% ROI. This ensures the factory is running at optimum capacity before taking on export volume commitments. All export orders: <strong>prepaid only, no credit terms</strong>. This protects cash flow and eliminates debtor risk entirely.</p>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-EXPORT-PROJ ── -->
+    <div class="doc-section" id="sec-export-proj">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 05B">Gulf Export Projections<div class="rule-accent"></div></div>
+
+      <p>Export is activated after ZK Ventures achieves <strong>50% ROI domestically</strong>. At that point, manufacturing capacity is already optimised, quality systems are established, and our international partners' Gulf networks are leveraged for first orders. All Gulf export orders are accepted on <strong>100% prepaid basis — no credit, no deferred payment.</strong></p>
+
+      <h3>Production Capacity vs Export Readiness</h3>
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-label">Daily Production Capacity</span>
+          <div class="stat-val">2,000</div>
+          <div class="stat-unit">notebooks/day</div>
+          <div class="stat-note">Semi-auto line, 1 shift (8 hrs)</div>
+        </div>
+        <div class="stat-card green">
+          <span class="stat-label">Monthly Output (Domestic)</span>
+          <div class="stat-val">40,000</div>
+          <div class="stat-unit">notebooks</div>
+          <div class="stat-note">Before export activation</div>
+        </div>
+        <div class="stat-card kraft">
+          <span class="stat-label">Export Capacity (Month)</span>
+          <div class="stat-val">15,000</div>
+          <div class="stat-unit">notebooks/month</div>
+          <div class="stat-note">~37% of capacity earmarked for export</div>
+        </div>
+        <div class="stat-card red">
+          <span class="stat-label">1 FCL Shipment Size</span>
+          <div class="stat-val">15–20K</div>
+          <div class="stat-unit">notebooks</div>
+          <div class="stat-note">Minimum viable export shipment</div>
+        </div>
+      </div>
+
+      <h3>Export Volume Projections — Gulf Markets</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Quarter</th>
+              <th>Target Country</th>
+              <th>Notebooks (units)</th>
+              <th>Export Price/Unit</th>
+              <th>Gross Revenue</th>
+              <th>Basis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Q1 Export</td><td>UAE (Dubai trial order)</td><td class="td-mono">15,000</td><td class="td-mono">₹32–38</td><td class="td-bold">₹4.8–5.7L</td><td>Partner referral — prepaid</td></tr>
+            <tr><td>Q2 Export</td><td>UAE + Saudi Arabia</td><td class="td-mono">25,000</td><td class="td-mono">₹32–38</td><td class="td-bold">₹8–9.5L</td><td>Repeat + new order</td></tr>
+            <tr><td>Q3 Export</td><td>UAE + Qatar</td><td class="td-mono">30,000</td><td class="td-mono">₹34–40</td><td class="td-bold">₹10.2–12L</td><td>School season (Aug–Sep)</td></tr>
+            <tr><td>Q4 Export</td><td>UAE + Saudi + Bahrain</td><td class="td-mono">35,000</td><td class="td-mono">₹34–40</td><td class="td-bold">₹11.9–14L</td><td>Full Gulf network active</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="2">Year 1 Export Total (4 Quarters)</td><td>~1,05,000 units</td><td>₹32–40 avg</td><td>~₹34–41L</td><td>All prepaid, FOB Haldia</td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <h3>Export Pricing vs Domestic Pricing</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Product</th><th>Domestic Price</th><th>Export Price (FOB)</th><th>Premium</th><th>Reason</th></tr></thead>
+          <tbody>
+            <tr><td>100-page ruled notebook</td><td class="td-mono">₹16–18</td><td class="td-mono">₹32–36</td><td class="td-bold">~100%</td><td>No middleman, bulk FOB, prepaid</td></tr>
+            <tr><td>200-page long book</td><td class="td-mono">₹28–32</td><td class="td-mono">₹50–60</td><td class="td-bold">~75%</td><td>Premium segment in Gulf market</td></tr>
+            <tr><td>Custom branded notebook</td><td class="td-mono">₹20–25</td><td class="td-mono">₹45–55</td><td class="td-bold">~100%+</td><td>School/corporate branding premium</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Why Demand Is Achievable</h3>
+      <div class="feature-grid">
+        <div class="feature-item blue">
+          <div class="fi-title">Indian Schools in Gulf</div>
+          <div class="fi-body">UAE alone has 180+ CBSE/ICSE Indian schools. Saudi, Qatar, and Bahrain add 200+ more. Each school purchases 5,000–30,000 notebooks annually. One school supply contract = significant repeating volume at premium prices.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">Stationery Wholesale Network</div>
+          <div class="fi-body">Dubai's Al Ain and Sharjah wholesale markets, Riyadh's Batha district, and Doha's wholesale zone are home to hundreds of Indian-owned stationery distributors actively sourcing from Indian manufacturers. Our partners' network provides warm introductions.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">No Competition on Price</div>
+          <div class="fi-body">Chinese notebooks face logistics cost parity with India now. Indian notebooks offer better quality perception, faster delivery (sea freight to Dubai 10 days vs 20+ from China), and the cultural familiarity factor with Indian-origin buyers in the Gulf.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">Prepaid Model = Zero Risk</div>
+          <div class="fi-body">By accepting only prepaid orders, ZK Ventures eliminates export credit risk entirely. No debtors, no bad debt, no collection headache. Cash in account before a single notebook is shipped. This discipline protects both the business and the partners.</div>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <div class="callout-title">Export Contribution to Partner Returns</div>
+        <p>Once export is activated (post 50% ROI), quarterly profits increase significantly due to higher export pricing. This accelerates partner returns toward the 3× exit threshold — potentially reducing the overall partnership duration by 6–12 months compared to domestic-only projections.</p>
+      </div>
+
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── SEC-PRODUCTS ── -->
+    <div class="doc-section" id="sec-products">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 06">Product Range<div class="rule-accent"></div></div>
+      <p>ZK Ventures will produce a comprehensive range of notebooks and stationery targeting students, schools, offices, and government institutions. Diversification across price tiers protects margins even when one segment sees price competition.</p>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <span class="pc-icon">📓</span>
+          <div class="pc-name">Single Line Notebook</div>
+          <div class="pc-spec">100 pages · 18×24cm · 60 GSM</div>
+          <div class="pc-price">₹15–18 / unit</div>
+        </div>
+        <div class="product-card">
+          <span class="pc-icon">📔</span>
+          <div class="pc-name">Long Book / Register</div>
+          <div class="pc-spec">200 pages · A4 size · 65 GSM</div>
+          <div class="pc-price">₹28–35 / unit</div>
+        </div>
+        <div class="product-card">
+          <span class="pc-icon">🔤</span>
+          <div class="pc-name">Four-Line Primary Book</div>
+          <div class="pc-spec">80 pages · DC size · 60 GSM</div>
+          <div class="pc-price">₹10–13 / unit</div>
+        </div>
+        <div class="product-card">
+          <span class="pc-icon">📐</span>
+          <div class="pc-name">Graph / Drawing Book</div>
+          <div class="pc-spec">48 pages · A4 size · 70 GSM</div>
+          <div class="pc-price">₹20–28 / unit</div>
+        </div>
+        <div class="product-card">
+          <span class="pc-icon">🗒️</span>
+          <div class="pc-name">Spiral Notepad</div>
+          <div class="pc-spec">100 pages · A5 · 70 GSM</div>
+          <div class="pc-price">₹30–42 / unit</div>
+        </div>
+        <div class="product-card">
+          <span class="pc-icon">🏢</span>
+          <div class="pc-name">Corporate Diary / Register</div>
+          <div class="pc-spec">192 pages · A5 hardbound · 80 GSM</div>
+          <div class="pc-price">₹80–150 / unit</div>
+        </div>
+        <div class="product-card">
+          <span class="pc-icon">📋</span>
+          <div class="pc-name">Muster Roll / Attendance</div>
+          <div class="pc-spec">Custom industrial registers</div>
+          <div class="pc-price">₹40–90 / unit</div>
+        </div>
+        <div class="product-card">
+          <span class="pc-icon">🎓</span>
+          <div class="pc-name">Practical / Lab Notebook</div>
+          <div class="pc-spec">100 pages · A4 · ruled+blank</div>
+          <div class="pc-price">₹35–55 / unit</div>
+        </div>
+      </div>
+
+      <h3>Branding Strategy</h3>
+      <p>ZK Ventures will launch under a distinct regional brand — such as <em>"Scholar's Edge"</em>, <em>"Inkmark"</em>, or <em>"Pagemark Stationery"</em> — with a clean, quality-first visual identity. Branding investment of ₹30,000–50,000 (covers, logo, carton design) converts a commodity product into a sellable brand within Jharkhand and Bihar retail networks.</p>
+
+      <div class="callout kraft">
+        <div class="callout-title">OEM / Private Label Revenue</div>
+        <p>Schools and coaching centers often want their name printed on notebook covers. Custom-printed notebooks are sold at a 20–30% premium over standard stock. ZK Ventures will offer cover printing as an add-on service from Month 6 — a simple one-time cover design investment with high repeat-order value.</p>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-MACHINERY ── -->
+    <div class="doc-section" id="sec-machinery">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 07">Machinery & Factory Setup<div class="rule-accent"></div></div>
+
+      <p>Notebook manufacturing is an assembly-based process — paper is purchased as finished rolls/reams, then processed through a series of machines. No chemical processing, no emissions, no pollution — making it suitable for a JIADA industrial shed with standard 3-phase power supply.</p>
+
+      <h3>Core Machinery Line (Scale 2 — Recommended)</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Machine</th><th>Function</th><th>Type</th><th>Est. Cost (INR)</th><th>Supplier Zone</th></tr></thead>
+          <tbody>
+            <tr><td>Paper Sheeting / Cutting Machine</td><td>Cuts parent paper rolls to required sheet sizes</td><td>Semi-auto</td><td class="td-bold td-mono">₹1.5–3.5L</td><td>Delhi, Kolkata</td></tr>
+            <tr><td>Ruling Machine</td><td>Prints single/double/four-line ruling on sheets</td><td>Semi-auto</td><td class="td-bold td-mono">₹2–3.5L</td><td>Delhi NCR</td></tr>
+            <tr><td>Notebook Stitching & Folding Machine</td><td>Collates, folds and stitches signatures</td><td>Semi-auto</td><td class="td-bold td-mono">₹1.5–3L</td><td>Rajkot, Delhi</td></tr>
+            <tr><td>Edge Squaring / Trimmer</td><td>Trims all 4 edges for clean, uniform finish</td><td>Semi-auto</td><td class="td-bold td-mono">₹80K–1.5L</td><td>Delhi, Mumbai</td></tr>
+            <tr><td>Cover Pasting / Gluing Machine</td><td>Attaches laminated cover boards</td><td>Semi-auto</td><td class="td-bold td-mono">₹80K–1.5L</td><td>Delhi NCR</td></tr>
+            <tr><td>Spiral Binding Machine (Phase 2)</td><td>Wire-o spiral binding for premium notebooks</td><td>Semi-auto</td><td class="td-bold td-mono">₹1–2L</td><td>Delhi, Ahmedabad</td></tr>
+            <tr><td>Shrink Wrap Packaging Machine</td><td>Packs sets of 5/10 notebooks in plastic wrap</td><td>Semi-auto</td><td class="td-bold td-mono">₹50K–1L</td><td>All major cities</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="3">Total Machinery Investment (Phase 1, without spiral)</td><td colspan="2">₹7–13 Lakh</td></tr></tfoot>
+        </table>
+      </div>
+
+      <h3>Factory Space Requirements</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Area</th><th>Purpose</th><th>Size Required</th></tr></thead>
+          <tbody>
+            <tr><td>Production Floor</td><td>All machinery, workflow, in-process material</td><td class="td-mono">600–800 sq ft</td></tr>
+            <tr><td>Raw Material Storage</td><td>Paper rolls/reams, covers, packaging</td><td class="td-mono">200–300 sq ft</td></tr>
+            <tr><td>Finished Goods Store</td><td>Packed notebooks awaiting dispatch</td><td class="td-mono">150–200 sq ft</td></tr>
+            <tr><td>Office / Admin</td><td>Desk, accounts, samples display</td><td class="td-mono">100–150 sq ft</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="2">Total Factory Space</td><td>1,050–1,450 sq ft</td></tr></tfoot>
+        </table>
+      </div>
+
+      <div class="callout green">
+        <div class="callout-title">JIADA Advantage</div>
+        <p>Standard JIADA sheds in Adityapur are 1,000–1,500 sq ft — a perfect fit. Monthly rent ranges from ₹8,000–18,000 depending on shed size and location within the estate. ZK Ventures already has familiarity with JIADA from the areca plate project, enabling a faster setup process and potential shared infrastructure.</p>
+      </div>
+
+      <h3>Utilities</h3>
+      <ul>
+        <li><strong>Power:</strong> 3-phase, 15–20 KW connected load. Monthly electricity: ₹10,000–18,000.</li>
+        <li><strong>Water:</strong> Minimal (only for office use). No process water required.</li>
+        <li><strong>Labour:</strong> 4–6 workers (2 machine operators, 1 quality checker, 1 packer, 1 supervisor/helper).</li>
+        <li><strong>Fire safety:</strong> Paper-heavy unit requires fire extinguishers and basic fire precautions as per Jharkhand Fire Safety norms.</li>
+      </ul>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-RAW ── -->
+    <div class="doc-section" id="sec-raw">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 08">Raw Materials & Sourcing<div class="rule-accent"></div></div>
+
+      <p>Raw material procurement is the most critical operational decision in notebook manufacturing. Paper alone constitutes 65–75% of the cost of goods. ZK Ventures' geographic location — within 250 km of Kolkata/Durgapur paper wholesale markets — is a structural cost advantage.</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Material</th><th>Spec / Grade</th><th>Approx. Rate</th><th>Consumption / 1000 notebooks</th><th>Primary Source</th></tr></thead>
+          <tbody>
+            <tr><td>Maplitho Writing Paper</td><td class="td-mono">55–70 GSM, white, ruleable</td><td class="td-bold td-mono">₹60–75/kg</td><td class="td-mono">~80–110 kg</td><td>Durgapur, Kolkata wholesale</td></tr>
+            <tr><td>Cover Board (Art Card)</td><td class="td-mono">250–300 GSM, 4-colour printed</td><td class="td-bold td-mono">₹90–120/kg</td><td class="td-mono">~15–20 kg</td><td>Delhi, Kolkata</td></tr>
+            <tr><td>Ruling Ink (offset)</td><td class="td-mono">Standard blue/red ruling ink</td><td class="td-bold td-mono">₹250–400/kg</td><td class="td-mono">~0.8–1.2 kg</td><td>Kolkata, Patna local</td></tr>
+            <tr><td>PVA / EVA Glue</td><td class="td-mono">Hot melt adhesive for binding</td><td class="td-bold td-mono">₹120–180/kg</td><td class="td-mono">~2–4 kg</td><td>Any major city</td></tr>
+            <tr><td>Stitching Wire / Thread</td><td class="td-mono">24–28 gauge galvanised wire</td><td class="td-bold td-mono">₹80–120/kg</td><td class="td-mono">~1–2 kg</td><td>Local hardware market</td></tr>
+            <tr><td>Packaging Material</td><td class="td-mono">Shrink film, cartons, stickers</td><td class="td-bold td-mono">₹15K–25K/month</td><td class="td-mono">—</td><td>Local packaging supplier</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Sourcing Strategy</h3>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="cc-header jh">Primary: Durgapur / Kolkata</div>
+          <div class="cc-body">
+            <div class="cc-row"><span>Distance from Jamshedpur</span><span class="cc-val">250–275 km</span></div>
+            <div class="cc-row"><span>Paper mills available</span><span class="cc-val">15+ mills</span></div>
+            <div class="cc-row"><span>Freight (per MT)</span><span class="cc-val">₹1,200–1,800</span></div>
+            <div class="cc-row"><span>Quality</span><span class="cc-val">Good–Excellent</span></div>
+            <div class="cc-row"><span>Credit terms</span><span class="cc-val">Net 30–45</span></div>
+          </div>
+        </div>
+        <div class="compare-card">
+          <div class="cc-header bh">Secondary: Delhi / UP</div>
+          <div class="cc-body">
+            <div class="cc-row"><span>Distance from Jamshedpur</span><span class="cc-val">~1,100 km</span></div>
+            <div class="cc-row"><span>Paper suppliers</span><span class="cc-val">50+ (wholesale)</span></div>
+            <div class="cc-row"><span>Freight (per MT)</span><span class="cc-val">₹3,500–5,000</span></div>
+            <div class="cc-row"><span>Quality</span><span class="cc-val">Excellent</span></div>
+            <div class="cc-row"><span>Credit terms</span><span class="cc-val">Net 30–60</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">Raw Material Cost Control — Key Rules</div>
+        <p>Paper prices are volatile (tied to pulp import prices). ZK Ventures strategy: (1) maintain 45–60 day paper inventory to absorb price spikes; (2) build 2–3 supplier relationships to ensure competitive quotes; (3) use price dips (October–February) to build buffer stock ahead of the April–July peak season.</p>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-LOCATION ── -->
+    <div class="doc-section" id="sec-location">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 09">Factory Location Analysis<div class="rule-accent"></div></div>
+
+      <p>ZK Ventures has evaluated Jharkhand (Jamshedpur/Adityapur) and Bihar (Chapra/Patna) as manufacturing locations. Both are valid, but the analysis clearly favours Jharkhand as the starting point.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="cc-header jh">Jharkhand — Adityapur, Jamshedpur</div>
+          <div class="cc-body">
+            <div class="cc-row"><span>Raw material (Durgapur)</span><span class="cc-val">250 km ✅</span></div>
+            <div class="cc-row"><span>JIADA industrial sheds</span><span class="cc-val">Available ✅</span></div>
+            <div class="cc-row"><span>Labour cost</span><span class="cc-val">₹10–14K/month</span></div>
+            <div class="cc-row"><span>MSME policy</span><span class="cc-val">25% subsidy ✅</span></div>
+            <div class="cc-row"><span>Existing ZK operations</span><span class="cc-val">Active ✅</span></div>
+            <div class="cc-row"><span>Export port (Haldia)</span><span class="cc-val">275 km ✅</span></div>
+            <div class="cc-row"><span>Govt tender (JEPC)</span><span class="cc-val">Eligible ✅</span></div>
+            <div class="cc-row"><span>Reach to Bihar mkt</span><span class="cc-val">1-day freight ✅</span></div>
+          </div>
+        </div>
+        <div class="compare-card">
+          <div class="cc-header bh">Bihar — Patna / Chapra</div>
+          <div class="cc-body">
+            <div class="cc-row"><span>Raw material (Kolkata)</span><span class="cc-val">600 km ⚠️</span></div>
+            <div class="cc-row"><span>BIADA industrial sheds</span><span class="cc-val">Hajipur, Muzaffarpur</span></div>
+            <div class="cc-row"><span>Labour cost</span><span class="cc-val">₹8–12K/month ✅</span></div>
+            <div class="cc-row"><span>MSME policy</span><span class="cc-val">25% subsidy ✅</span></div>
+            <div class="cc-row"><span>Existing ZK operations</span><span class="cc-val">Family base only</span></div>
+            <div class="cc-row"><span>Export port (Haldia)</span><span class="cc-val">600+ km ⚠️</span></div>
+            <div class="cc-row"><span>Govt tender (BEP)</span><span class="cc-val">Huge volume ✅</span></div>
+            <div class="cc-row"><span>Student market</span><span class="cc-val">3× larger ✅</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <div class="callout-title">Verdict: Start in Jharkhand → Expand to Bihar</div>
+        <p>Adityapur is the right starting location for Year 1–2 because ZK Ventures already has infrastructure, registration, contacts, and operational familiarity there. The factory can supply both Jharkhand and Bihar markets from Jamshedpur with one-day freight. Bihar expansion (BIADA unit or distribution depot) is a Year 3 priority when revenue justifies it.</p>
+      </div>
+
+      <h3>Market Catchment from Jamshedpur</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>City</th><th>Distance</th><th>Road</th><th>Population</th><th>Market Potential</th></tr></thead>
+          <tbody>
+            <tr><td>Jamshedpur (home)</td><td class="td-mono">—</td><td class="td-mono">—</td><td class="td-mono">7 lakh+</td><td class="td-bold">Direct</td></tr>
+            <tr><td>Dhanbad</td><td class="td-mono">85 km</td><td class="td-mono">NH-18</td><td class="td-mono">12 lakh</td><td class="td-bold">High</td></tr>
+            <tr><td>Bokaro</td><td class="td-mono">100 km</td><td class="td-mono">NH-18</td><td class="td-mono">10 lakh</td><td class="td-bold">High</td></tr>
+            <tr><td>Ranchi</td><td class="td-mono">130 km</td><td class="td-mono">NH-33</td><td class="td-mono">15 lakh</td><td class="td-bold">Very High</td></tr>
+            <tr><td>Chaibasa / W. Singhbhum</td><td class="td-mono">75 km</td><td class="td-mono">NH-20</td><td class="td-mono">6 lakh</td><td class="td-bold">Medium</td></tr>
+            <tr><td>Chapra (Bihar)</td><td class="td-mono">350 km</td><td class="td-mono">NH-31</td><td class="td-mono">14 lakh</td><td class="td-bold">Medium</td></tr>
+            <tr><td>Patna (Bihar)</td><td class="td-mono">420 km</td><td class="td-mono">NH-31</td><td class="td-mono">25 lakh</td><td class="td-bold">High (Year 2)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-INVESTMENT ── -->
+    <div class="doc-section" id="sec-investment">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 10">Investment Plan<div class="rule-accent"></div></div>
+
+      <h3>Total Capital Structure</h3>
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-label">Total Project Cost</span>
+          <div class="stat-val">₹15L</div>
+          <div class="stat-note">Complete factory setup</div>
+        </div>
+        <div class="stat-card green">
+          <span class="stat-label">Partner Contribution (2×₹6L)</span>
+          <div class="stat-val">₹12L</div>
+          <div class="stat-note">80% of total — silent partners</div>
+        </div>
+        <div class="stat-card kraft">
+          <span class="stat-label">Promoter Contribution</span>
+          <div class="stat-val">₹3L</div>
+          <div class="stat-note">ZK Ventures own funds</div>
+        </div>
+        <div class="stat-card red">
+          <span class="stat-label">Bank Loan</span>
+          <div class="stat-val">NIL</div>
+          <div class="stat-note">Debt-free start — all equity</div>
+        </div>
+      </div>
+
+      <h3>Detailed Use of Funds</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Head</th><th>Details</th><th>Amount (₹)</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Machinery — Core Line</td><td>Cutting, ruling, stitching, trimming, cover pasting</td><td class="td-bold td-mono">7,00,000</td></tr>
+            <tr><td>2</td><td>Factory Setup</td><td>JIADA shed deposit (3 months), electrical fitting, flooring, storage racks</td><td class="td-bold td-mono">1,50,000</td></tr>
+            <tr><td>3</td><td>First Raw Material Stock</td><td>Paper (2 MT), covers, ink, glue, packaging — 45-day supply</td><td class="td-bold td-mono">2,50,000</td></tr>
+            <tr><td>4</td><td>Branding & Packaging Design</td><td>Brand logo, cover designs, carton artwork, sample production</td><td class="td-bold td-mono">50,000</td></tr>
+            <tr><td>5</td><td>Licensing & Registration</td><td>Factory licence, pollution clearance, trade licence, Udyam amendment</td><td class="td-bold td-mono">30,000</td></tr>
+            <tr><td>6</td><td>Working Capital Reserve</td><td>2-month operating expenses buffer (salaries, rent, power, freight)</td><td class="td-bold td-mono">2,00,000</td></tr>
+            <tr><td>7</td><td>Contingency</td><td>Equipment install, transport, unexpected costs</td><td class="td-bold td-mono">70,000</td></tr>
+            <tr><td>8</td><td>Market Development</td><td>School visits, sample notebooks, initial trade relationship costs</td><td class="td-bold td-mono">50,000</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="3">TOTAL PROJECT COST</td><td>₹15,00,000</td></tr></tfoot>
+        </table>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">PMEGP Subsidy Potential</div>
+        <p>ZK Ventures is eligible for PMEGP (Prime Minister Employment Generation Programme) subsidy of 25% of project cost for urban MSME — up to ₹3.75 lakh on this project. If applied for through Khadi & Village Industries Commission (KVIC) or State DIC before machinery purchase, this subsidy directly reduces the capital requirement or increases available working capital. Application submitted post-partner funding confirmation.</p>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-PNL ── -->
+    <div class="doc-section" id="sec-pnl">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 11">Profit & Loss Projections<div class="rule-accent"></div></div>
+
+      <h3>Monthly P&L — Three Scenarios (1,500 notebooks/day production)</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>P&L Line</th><th>Conservative (Month 3–6)</th><th>Moderate (Month 6–12)</th><th>Optimistic (Year 2+)</th></tr></thead>
+          <tbody>
+            <tr><td>Production (notebooks/day)</td><td class="td-mono">800</td><td class="td-mono">1,500</td><td class="td-mono">2,500+</td></tr>
+            <tr><td>Working Days/Month</td><td class="td-mono">24</td><td class="td-mono">25</td><td class="td-mono">26</td></tr>
+            <tr><td>Monthly Units Produced</td><td class="td-mono">19,200</td><td class="td-mono">37,500</td><td class="td-mono">65,000</td></tr>
+            <tr><td class="td-bold">Gross Revenue</td><td class="td-bold td-mono">₹2,88,000</td><td class="td-bold td-mono">₹5,85,000</td><td class="td-bold td-mono">₹10,72,500</td></tr>
+            <tr><td>Paper & Raw Materials (65%)</td><td class="td-mono">₹1,87,200</td><td class="td-mono">₹3,80,250</td><td class="td-mono">₹6,97,125</td></tr>
+            <tr><td>Labour (5 workers)</td><td class="td-mono">₹55,000</td><td class="td-mono">₹65,000</td><td class="td-mono">₹85,000</td></tr>
+            <tr><td>Electricity</td><td class="td-mono">₹12,000</td><td class="td-mono">₹16,000</td><td class="td-mono">₹22,000</td></tr>
+            <tr><td>Factory Rent</td><td class="td-mono">₹14,000</td><td class="td-mono">₹14,000</td><td class="td-mono">₹18,000</td></tr>
+            <tr><td>Transport / Freight</td><td class="td-mono">₹12,000</td><td class="td-mono">₹18,000</td><td class="td-mono">₹28,000</td></tr>
+            <tr><td>Packaging / Misc</td><td class="td-mono">₹10,000</td><td class="td-mono">₹14,000</td><td class="td-mono">₹20,000</td></tr>
+            <tr><td class="td-bold">Total Expenses</td><td class="td-bold td-mono">₹2,90,200</td><td class="td-bold td-mono">₹5,07,250</td><td class="td-bold td-mono">₹8,70,125</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td>NET MONTHLY PROFIT</td><td>₹(2,200) — near break-even</td><td>₹77,750</td><td>₹2,02,375</td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="callout red">
+        <div class="callout-title">Month 1–3: Ramp-Up Phase</div>
+        <p>The first 3 months are market-building months. ZK Ventures will operate at reduced production, build school and distributor relationships, and fulfil initial sample orders. The ₹2 lakh working capital reserve covers this period. Month 4 onwards, volume targets kick in with confirmed repeat orders.</p>
+      </div>
+
+      <h3>Annual Projection — Year 1 vs Year 2</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Year</th><th>Annual Revenue</th><th>Annual Expenses</th><th>Annual Net Profit</th><th>Gross Margin</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold">Year 1</td><td class="td-mono">₹45–55 lakh</td><td class="td-mono">₹36–44 lakh</td><td class="td-bold td-mono">₹8–12 lakh</td><td class="td-mono">18–22%</td></tr>
+            <tr><td class="td-bold">Year 2</td><td class="td-mono">₹80–110 lakh</td><td class="td-mono">₹58–80 lakh</td><td class="td-bold td-mono">₹18–28 lakh</td><td class="td-mono">25–32%</td></tr>
+            <tr><td class="td-bold">Year 3</td><td class="td-mono">₹130–180 lakh</td><td class="td-mono">₹90–130 lakh</td><td class="td-bold td-mono">₹30–50 lakh</td><td class="td-mono">28–36%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-ROI ── -->
+    <div class="doc-section" id="sec-roi">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 12">ROI & Break-Even Analysis<div class="rule-accent"></div></div>
+
+      <h3>Break-Even Calculation</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Metric</th><th>Value</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Fixed Monthly Cost</td><td class="td-mono">₹81,000</td><td>Rent + Labour + Power + EMI = fixed</td></tr>
+            <tr><td>Variable Cost per Notebook</td><td class="td-mono">₹9.80</td><td>Paper + ink + packaging + freight</td></tr>
+            <tr><td>Average Selling Price</td><td class="td-mono">₹15.20</td><td>Blended across product mix</td></tr>
+            <tr><td>Contribution per Unit</td><td class="td-mono">₹5.40</td><td>Revenue – Variable cost</td></tr>
+            <tr><td class="td-bold">Break-Even Units/Month</td><td class="td-bold td-mono">15,000 units</td><td>Fixed cost ÷ Contribution = 81,000 ÷ 5.4</td></tr>
+            <tr><td>Break-Even Units/Day</td><td class="td-mono">625 notebooks/day</td><td>At 24 working days</td></tr>
+            <tr><td>Machine Capacity (semi-auto)</td><td class="td-mono">2,000–3,000/day</td><td>Break-even is only 31% of capacity</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout green">
+        <div class="callout-title">Strong Safety Margin</div>
+        <p>Break-even is at just 625 notebooks per day — barely 31% of machine capacity. This means even in a worst-case scenario with poor initial sales, the factory covers its costs at very low utilisation. At 50% utilisation (1,000 units/day), profit is ~₹54,000/month. At 75% (1,500/day), profit is ~₹1.21 lakh/month.</p>
+      </div>
+
+      <h3>International Partner Return Calculation</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Month</th><th>Estimated Net Profit</th><th>Partner Share (30% each × 2 partners)</th><th>Each Partner Receives</th><th>Cumulative (Each Partner)</th></tr></thead>
+          <tbody>
+            <tr><td>Month 1–3</td><td class="td-mono">Near zero / small loss</td><td class="td-mono">—</td><td class="td-mono">—</td><td class="td-mono">₹0</td></tr>
+            <tr><td>Month 4</td><td class="td-mono">₹35,000</td><td class="td-mono">₹10,500</td><td class="td-mono">₹5,250</td><td class="td-mono">₹5,250</td></tr>
+            <tr><td>Month 6</td><td class="td-mono">₹75,000</td><td class="td-mono">₹22,500</td><td class="td-mono">₹11,250</td><td class="td-mono">₹27,750</td></tr>
+            <tr><td>Month 9</td><td class="td-mono">₹1,00,000</td><td class="td-mono">₹30,000</td><td class="td-mono">₹15,000</td><td class="td-mono">₹72,750</td></tr>
+            <tr><td>Month 12</td><td class="td-mono">₹1,20,000</td><td class="td-mono">₹36,000</td><td class="td-mono">₹18,000</td><td class="td-mono">₹1,26,750</td></tr>
+            <tr><td>Month 18</td><td class="td-mono">₹1,50,000</td><td class="td-mono">₹45,000</td><td class="td-mono">₹22,500</td><td class="td-mono">₹2,58,750</td></tr>
+            <tr><td>Month 24</td><td class="td-mono">₹1,80,000</td><td class="td-mono">₹54,000</td><td class="td-mono">₹27,000</td><td class="td-mono">₹4,23,750</td></tr>
+            <tr><td>Month 30</td><td class="td-mono">₹2,00,000</td><td class="td-mono">₹60,000</td><td class="td-mono">₹30,000</td><td class="td-bold td-mono">₹5,73,750</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="3">Projected 3× Return (₹18 lakh each) Timeline</td><td colspan="2">~32–40 months (under optimistic scenario ~24 months)</td></tr></tfoot>
+        </table>
+      </div>
+
+      <div class="callout kraft">
+        <div class="callout-title">Investment Summary for Each International Partner</div>
+        <p>Each partner contributes ₹6 lakh. Profit-sharing begins from Month 4 onwards as operations stabilise. The exit trigger is <strong>₹18 lakh received</strong> (3× return) per partner. Based on projections, the typical exit window is 28–36 months from deployment. No fixed tenure, no interest, no repayment schedule — pure profit-sharing until the 3× target is achieved.</p>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── SEC-WHY-INVEST ── -->
+    <div class="doc-section" id="sec-why-invest">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 12B — SPECIAL">Why Gulf Diaspora Should Invest in India<div class="rule-accent"></div></div>
+
+      <p>If you are living and working in the Gulf — UAE, Qatar, Saudi Arabia, or Bahrain — you already understand the power of hard currency. Every dirham, riyal, or dinar you earn is worth considerably more back home. This section makes the case for why putting a portion of those Gulf earnings into an Indian manufacturing business is one of the smartest financial decisions you can make today.</p>
+
+      <div class="callout kraft">
+        <div class="callout-title">The Currency Advantage — Your Single Biggest Edge</div>
+        <p>The Indian Rupee has been on a long-term structural decline against major Gulf currencies. This is not a risk for you — <strong>it is your advantage.</strong> You invest in rupees, earn profits in rupees, and when you choose to repatriate, the exchange rate works in your favour.</p>
+      </div>
+
+      <h3>Current Exchange Rates (June 2026 — Approximate)</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Currency</th><th>Country</th><th>1 Unit = INR</th><th>₹6 Lakh Investment =</th><th>Investor Perspective</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold">1 USD</td><td>USA / Reference</td><td class="td-mono">₹92</td><td class="td-mono">~$6,521</td><td>Global benchmark</td></tr>
+            <tr><td class="td-bold">1 AED</td><td>UAE Dirham</td><td class="td-mono">₹26</td><td class="td-mono">~AED 23,077</td><td>₹6L is ~AED 23K — roughly 2–3 months savings for a mid-level UAE expat</td></tr>
+            <tr><td class="td-bold">1 SAR</td><td>Saudi Riyal</td><td class="td-mono">₹26</td><td class="td-mono">~SAR 23,077</td><td>₹6L is ~SAR 23K — very achievable entry point</td></tr>
+            <tr><td class="td-bold">1 BHD</td><td>Bahraini Dinar</td><td class="td-mono">₹252</td><td class="td-mono">~BHD 2,381</td><td>₹6L is just ~BHD 2,400 — exceptionally low in dinar terms</td></tr>
+            <tr><td class="td-bold">1 QAR</td><td>Qatari Riyal</td><td class="td-mono">~₹25</td><td class="td-mono">~QAR 24,000</td><td>₹6L is ~QAR 24K — 2–3 months savings for a professional in Doha</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout green">
+        <div class="callout-title">What This Means For You</div>
+        <p>Your ₹6 lakh investment — which targets a <strong>3× return (₹18 lakh)</strong> — translates to approximately <strong>AED 69,000 / SAR 69,000 / BHD 7,143 / QAR 72,000</strong> in total returns. At current exchange rates, that is a meaningful, real-world return in hard currency on a relatively small initial outlay.</p>
+      </div>
+
+      <h3>✅ Pros — Why This Makes Sense</h3>
+      <div class="feature-grid">
+        <div class="feature-item gold">
+          <div class="fi-title">Declining Rupee = Your Gain</div>
+          <div class="fi-body">The rupee's long-term depreciation against Gulf currencies means your investment value keeps growing in dinar/dirham/riyal terms even before profit. Invest ₹6L today; the real Gulf-currency value of your returns increases over time.</div>
+        </div>
+        <div class="feature-item gold">
+          <div class="fi-title">Affordable Indian Labour & Electricity</div>
+          <div class="fi-body">Factory labour in Jamshedpur costs ₹10,000–14,000/month per worker. Electricity: ₹7–9/unit (industrial). These running costs — which seem modest to a Gulf resident — are the backbone of our healthy 35–45% gross margin. Your money works harder here than almost anywhere.</div>
+        </div>
+        <div class="feature-item gold">
+          <div class="fi-title">Strong India–Gulf Trade Relations</div>
+          <div class="fi-body">India and the Gulf countries share deep bilateral trade relationships, reinforced by the India-UAE CEPA (Comprehensive Economic Partnership Agreement) signed in 2022. Movement of goods, remittances, and business between India and Gulf is structurally smooth and well-regulated.</div>
+        </div>
+        <div class="feature-item gold">
+          <div class="fi-title">Export Orders Through Your Network</div>
+          <div class="fi-body">The Gulf has 9M+ Indian and subcontinent expatriates. Many own or manage stationery stores, school supply distributors, and wholesale businesses. As our partner, your local referrals can directly generate export orders — turning your social network into a revenue channel with minimal effort.</div>
+        </div>
+        <div class="feature-item gold">
+          <div class="fi-title">Silent Investment — Zero Time Commitment</div>
+          <div class="fi-body">You invest, we operate. No need to quit your Gulf job, relocate, or micromanage. ZK Ventures handles all operations, compliance, labour, and logistics. You receive quarterly P&L reports and profit transfers. It is genuinely passive income.</div>
+        </div>
+        <div class="feature-item gold">
+          <div class="fi-title">Tangible Asset, Real Product</div>
+          <div class="fi-body">Unlike stock market investments or cryptocurrency, this is a physical manufacturing unit producing real notebooks sold in real markets. Every rupee is traceable to production, sales, and bank deposits — full transparency, no speculation.</div>
+        </div>
+      </div>
+
+      <h3>⚠️ Cons — In the Interest of Full Transparency</h3>
+      <div class="callout red">
+        <div class="callout-title">Honest Disclosure</div>
+        <p>We believe an investor who understands the risks is a better long-term partner than one who is oversold. The following are real considerations — none are dealbreakers, but they deserve mention.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-item red">
+          <div class="fi-title">Early-Stage Business Risk</div>
+          <div class="fi-body">ZK Ventures is building this unit fresh. While the promoter has operational business experience, the notebook manufacturing unit is a new venture. Early months carry execution risk — delays in machinery, raw material sourcing, or first order booking are possible.</div>
+        </div>
+        <div class="feature-item red">
+          <div class="fi-title">Profit Is Not Guaranteed</div>
+          <div class="fi-body">This is a profit-sharing arrangement, not a fixed return instrument. If in any quarter the business posts a loss or lower profit, partner disbursements will be proportionally lower. Projections are estimates based on reasonable assumptions, not guarantees.</div>
+        </div>
+        <div class="feature-item red">
+          <div class="fi-title">Distance & Oversight</div>
+          <div class="fi-body">Being based in the Gulf, in-person oversight is not practical on a regular basis. Partners rely on quarterly reports and the promoter's integrity. Factory visits are always welcome — but not always feasible from abroad.</div>
+        </div>
+      </div>
+
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── SEC-INVESTOR ── -->
+    <div class="doc-section" id="sec-investor">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 13">International Partner Proposal<div class="rule-accent"></div></div>
+
+      <p>ZK Ventures is inviting <strong>exactly two international silent partners</strong> to participate in this manufacturing venture. This is a private arrangement — not a public offering — structured for simplicity, transparency, and mutual benefit.</p>
+
+      <h3>Why Silent Partnership?</h3>
+      <p>The silent partner model is ideal for international investors for several reasons:</p>
+      <ul>
+        <li>No operational involvement required — zero time commitment from the investor's side</li>
+        <li>No risk of business disputes arising from day-to-day operational decisions</li>
+        <li>Regular monthly profit reports provide full transparency without micromanagement</li>
+        <li>Investment is in Indian Rupees — no FEMA/RBI complications for international remittance to India under family/business investment provisions</li>
+        <li>ZK Ventures handles all compliance, GST, labour law, and accounting obligations</li>
+      </ul>
+
+      <h3>What International Partners Get</h3>
+      <div class="feature-grid">
+        <div class="feature-item gold">
+          <div class="fi-title">Quarterly Profit Sharing</div>
+          <div class="fi-body">Profit sharing is calculated and disbursed every quarter (every 3 months). Each international partner receives their share of net verified quarterly profit, calculated after all expenses, overheads, and taxes.</div>
+        </div>
+        <div class="feature-item gold">
+          <div class="fi-title">Tiered Retention Model</div>
+          <div class="fi-body">To ensure the business grows strong: 20% of profit is retained in the business until 50% ROI is achieved; 15% retained from 50%–75% ROI; 10% retained from 75%–100% ROI. After 100% ROI, full 30% per partner disbursed until 3× threshold.</div>
+        </div>
+        <div class="feature-item gold">
+          <div class="fi-title">Quarterly P&L Report</div>
+          <div class="fi-body">A clear, itemized quarterly statement of production, sales, expenses, and profit is shared with each investor via WhatsApp/email by the 10th of the month following each quarter. No ambiguity on numbers.</div>
+        </div>
+        <div class="feature-item gold">
+          <div class="fi-title">Factory Visit Access</div>
+          <div class="fi-body">Partners are welcome to visit the Adityapur factory at any time with reasonable notice. ZK Ventures maintains an open-book policy with all financiers.</div>
+        </div>
+      </div>
+
+      <h3>Fund Deployment Protocol</h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 1 · Pre-Deployment</div>
+          <div class="tl-title">Agreement Signing</div>
+          <div class="tl-body">A formal Profit-Sharing Agreement between ZK Ventures and each international partner, specifying contribution amount, profit-sharing terms, quarterly reporting obligations, and exit trigger. Signed on ₹500 stamp paper and notarised. This document (the Feasibility Report cum Proposal) serves as the basis for that agreement — it is not itself a binding contract.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 2 · Fund Transfer</div>
+          <div class="tl-title">International Remittance to ZK Ventures Account</div>
+          <div class="tl-body">Each international partner transfers ₹6 lakh to ZK Ventures' current bank account via SWIFT/NEFT/RTGS. A formal acknowledgement receipt is issued for every transfer within 24 hours.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 3 · Deployment</div>
+          <div class="tl-title">Machinery Purchase & Factory Setup</div>
+          <div class="tl-body">Funds deployed as per the Investment Plan (Section 10). All purchase receipts and invoices shared with partners within 7 days of each major purchase.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 4 · Operations</div>
+          <div class="tl-title">Monthly Reporting Begins</div>
+          <div class="tl-body">From Month 1, monthly P&L reports are shared. Profit disbursement begins from Month 4 (or earlier if profit is generated before that).</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 5 · Exit</div>
+          <div class="tl-title">3× Return Achieved — Partnership Concludes</div>
+          <div class="tl-body">Once each partner has received cumulative payments totalling ₹18 lakh, their participation automatically concludes. No further obligation from either side. Full ownership of ZK Ventures' notebook unit vests in the promoter.</div>
+        </div>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-TERMS ── -->
+    <div class="doc-section" id="sec-terms">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 14">Terms & Conditions<div class="rule-accent"></div></div>
+
+      <p>The following terms govern the relationship between ZK Ventures (Promoter) and each International Silent Partner. These are designed to be simple, fair, and enforceable, and will be formally codified in a notarised Profit-Sharing Agreement before any funds are deployed.</p>
+
+      <div class="terms-block">
+        <div class="terms-header">
+          ZK Ventures — International Partner Silent Financier Agreement
+          <span class="th-sub">Paper Notebook Manufacturing Unit · Adityapur, Jharkhand · 2026</span>
+        </div>
+        <div class="terms-body">
+          <div class="term-row">
+            <div class="term-key">Structure</div>
+            <div class="term-val">Silent partnership / profit-sharing arrangement. Not an equity stake, not a loan. Each international partner is a <strong>profit-sharing financier</strong> with no ownership claim over assets, business, or future ventures of ZK Ventures.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Number of Partners</div>
+            <div class="term-val"><strong>Maximum two (2)</strong> international partners for this unit. The arrangement is closed once both positions are filled. No additional partners will be admitted without written consent of existing partners.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Contribution</div>
+            <div class="term-val"><strong>₹6,00,000 (Six Lakh Rupees)</strong> per partner. Total partner contribution: ₹12 lakh. Promoter contribution: ₹3 lakh minimum.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Profit Share</div>
+            <div class="term-val">Profit sharing is calculated and disbursed <strong>quarterly</strong>. Each partner receives 30% of net quarterly profit, subject to a tiered reinvestment retention:<br><br>
+    • <strong>Until 50% ROI achieved:</strong> 20% of profit retained in business; 80% distributed (30% per partner × 2)<br>
+    • <strong>50% to 75% ROI:</strong> 15% retained in business; 85% distributed<br>
+    • <strong>75% to 100% ROI:</strong> 10% retained in business; 90% distributed<br>
+    • <strong>After 100% ROI:</strong> 30% per partner disbursed quarterly until 3× return threshold is achieved, with no further retention.<br><br>
+    Net profit is calculated after all direct expenses, overheads, rent, salaries, transport, and applicable taxes.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Exit Trigger</div>
+            <div class="term-val">Each partner's participation concludes automatically when cumulative payments received reach <strong>₹18,00,000 (3× of ₹6 lakh)</strong>. No further obligation from either party after exit. Exit is calculated individually for each partner.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Interest on Capital</div>
+            <div class="term-val"><strong>Zero (0%).</strong> This is an interest-free contribution. The return mechanism is profit-sharing only. No fixed interest is payable regardless of profitability.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Repayment of Principal</div>
+            <div class="term-val">There is <strong>no separate repayment of principal capital</strong>. The partner's full return (including recovery of principal) is embedded within the 3× profit-sharing exit trigger.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Loss Periods</div>
+            <div class="term-val">In months where net profit is zero or negative, <strong>no payment is made</strong> to partners. No amount is carried forward as a liability. Partners bear the business risk proportionate to their profit entitlement.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Reporting</div>
+            <div class="term-val">ZK Ventures will provide each partner with a monthly P&L statement by the <strong>5th of each month</strong> for the prior month. The statement will include production volume, sales quantity, revenue, expense line items, and net profit. Disbursement by the <strong>10th of each month</strong>.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Audit Rights</div>
+            <div class="term-val">Either partner may request a third-party accounting verification of any monthly statement, with cost borne by the requesting party. ZK Ventures commits to full documentary access.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Operational Authority</div>
+            <div class="term-val">All operational decisions — hiring, pricing, product mix, supplier selection, sales channels — rest exclusively with the Promoter (ZK Ventures). Partners have no operational role or veto rights.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Capital Protection</div>
+            <div class="term-val">In case of permanent factory closure (force majeure or business failure), net realisable value of machinery and inventory, after all statutory obligations, will be distributed to partners proportionate to their contribution, before any distribution to the Promoter.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Confidentiality</div>
+            <div class="term-val">Partners agree to keep all business financials, supplier relationships, product costings, and operational details strictly confidential. This document is for authorised readers only.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Dispute Resolution</div>
+            <div class="term-val">Any disputes to be resolved through mutual discussion first, followed by arbitration under the Arbitration and Conciliation Act, 1996. Jurisdiction: Jamshedpur, Jharkhand.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Governing Law</div>
+            <div class="term-val">Laws of India. international partner foreign exchange compliance remains each partner's individual responsibility under FEMA/RBI guidelines for inward remittance.</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Lock-In Period</div>
+            <div class="term-val">A minimum of <strong>12 months</strong> from the date of capital deployment. Early withdrawal in Year 1 is not permitted except in documented personal emergency, in which case the partner may receive 80% of net asset value of their contribution, with 3 months' notice.</div>
+          </div>
+        </div>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-SUBSIDIES ── -->
+    <div class="doc-section" id="sec-subsidies">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 15">Government Subsidies & Incentives<div class="rule-accent"></div></div>
+
+      <p>ZK Ventures' MSME/Udyam registration and Jharkhand location make it eligible for multiple government support schemes. These subsidies are not factored into the base financial projections — they represent additional upside that directly reduces investor capital requirement or improves ROI.</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Scheme</th><th>Nodal Body</th><th>Benefit</th><th>Eligible Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold">PMEGP</td><td>KVIC / DIC</td><td>25% capital subsidy (urban MSME)</td><td class="td-bold td-mono">Up to ₹3.75L</td><td>Eligible — apply on funding</td></tr>
+            <tr><td class="td-bold">JH MSME Policy 2023</td><td>JIADA / Dept. of Industries</td><td>Capital investment subsidy 25%</td><td class="td-bold td-mono">Up to ₹5L (first 3 yrs)</td><td>Eligible</td></tr>
+            <tr><td class="td-bold">CGTMSE</td><td>SIDBI</td><td>Collateral-free credit guarantee</td><td class="td-bold td-mono">Up to ₹5L</td><td>For future credit needs</td></tr>
+            <tr><td class="td-bold">GeM Registration</td><td>Govt. e-Marketplace</td><td>Direct govt. supply without tender</td><td>Unlimited channel</td><td>Apply at launch</td></tr>
+            <tr><td class="td-bold">MSME Samadhaan</td><td>MSME Ministry</td><td>Payment protection from buyers</td><td>Dispute resolution</td><td>Active at start</td></tr>
+            <tr><td class="td-bold">NSIC-Credit Support</td><td>NSIC</td><td>Raw material procurement credit</td><td class="td-bold td-mono">Up to ₹5L</td><td>Year 2</td></tr>
+            <tr><td class="td-bold">EEPC / RCMC</td><td>EEPC India</td><td>Export promotion, trade fair subsidy</td><td>Up to ₹5L/year</td><td>Year 2 (export phase)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout kraft">
+        <div class="callout-title">Subsidy Impact on Investor ROI</div>
+        <p>If PMEGP subsidy of ₹3.75 lakh is received in Year 1, this amount is added directly to profit in the month of receipt and distributed per the profit-sharing terms — effectively meaning international partners would collectively receive ₹2.25 lakh (60% of ₹3.75L) from subsidy alone. This is a significant bonus on top of operating profit.</p>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-COMPETITION ── -->
+    <div class="doc-section" id="sec-competition">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 16">Competitive Landscape<div class="rule-accent"></div></div>
+
+      <p>Honest assessment of competition is essential. ZK Ventures competes primarily in the <strong>unorganized regional market</strong> — not with national brands like Classmate or Navneet. Understanding who the real competitors are, and where ZK Ventures has structural advantages, is key to investor confidence.</p>
+
+      <h3>Competitive Tiers</h3>
+
+      <h4>Tier 1: National Brands (NOT direct competitors at launch)</h4>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Brand</th><th>Parent</th><th>Strength</th><th>Weakness vs ZK Ventures</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold">Classmate</td><td>ITC Ltd</td><td>Largest brand, premium quality, nationwide distribution</td><td>Priced 30–40% higher, slow to serve local institutions, no tender flexibility</td></tr>
+            <tr><td class="td-bold">Navneet / Youva</td><td>Navneet Education</td><td>Deep education sector roots, strong Maharashtra base</td><td>Limited distribution in Jharkhand, premium pricing</td></tr>
+            <tr><td class="td-bold">DOMS</td><td>DOMS Industries</td><td>Fast-growing, student-friendly pricing</td><td>Primarily writing instruments; notebooks secondary</td></tr>
+            <tr><td class="td-bold">Paperkraft</td><td>ITC Ltd</td><td>Office stationery leader</td><td>No presence in student/school segment</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Tier 2: Regional Players (Direct competition)</h4>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Type</th><th>Where</th><th>Threat Level</th><th>ZK Advantage</th></tr></thead>
+          <tbody>
+            <tr><td>Small local notebook units</td><td>Patna, Ranchi</td><td class="td-bold" style="color:var(--tab-green)">Moderate</td><td>ZK has MSME certification, better quality controls, branding</td></tr>
+            <tr><td>Chinese imported notebooks</td><td>Retail wholesale</td><td class="td-bold" style="color:var(--margin-red)">High (price)</td><td>Post-COVID supply disruption; "Made in India" preference growing</td></tr>
+            <tr><td>Delhi/UP wholesalers</td><td>Distributed via agents</td><td class="td-bold" style="color:#B57C00">Medium</td><td>Higher freight to Jharkhand, no local service or customization</td></tr>
+            <tr><td>Kolkata print houses</td><td>West Bengal</td><td class="td-bold" style="color:#B57C00">Medium</td><td>Good quality but no local distribution, school relationships absent</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">The 75% Market Reality</div>
+        <p>Nationally, 75% of notebook sales are by unorganized local and Chinese players. In Jharkhand specifically, there is NO dominant organized local manufacturer. ZK Ventures enters a market with structural demand, no entrenched local champion, and a quality gap that a well-managed MSME unit can comfortably fill.</p>
+      </div>
+
+      <h3>ZK Ventures Competitive Differentiators</h3>
+      <div class="feature-grid">
+        <div class="feature-item blue">
+          <div class="fi-title">MSME Tender Eligibility</div>
+          <div class="fi-body">Government procurement policy mandates 25% from MSMEs. ZK Ventures can access JEPC and BEP tenders that Chinese products and large national brands cannot directly participate in.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">Local Relationships</div>
+          <div class="fi-body">ZK Ventures' existing network in Jamshedpur — through manpower contracting and site services — gives direct access to school and institutional decision-makers that no outside manufacturer can replicate.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">Custom Printing Capability</div>
+          <div class="fi-body">School-name-printed covers, coaching center branded notebooks, industrial custom registers — services national brands won't offer for small volume, but ZK Ventures will at a premium.</div>
+        </div>
+        <div class="feature-item blue">
+          <div class="fi-title">Near-Market Manufacturing</div>
+          <div class="fi-body">Made-in-Jamshedpur notebooks carry zero inter-state freight to local buyers, a direct cost advantage of ₹2–4/unit vs. suppliers from Maharashtra or Delhi.</div>
+        </div>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-RISKS ── -->
+    <div class="doc-section" id="sec-risks">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 17">Risk Analysis & Mitigation<div class="rule-accent"></div></div>
+
+      <p>ZK Ventures acknowledges the following risks and has identified concrete mitigation strategies for each. Transparency on risk is a core principle of this investor relationship.</p>
+
+      <div class="tbl-wrap">
+        <div class="risk-row header">
+          <div class="risk-cell">Risk</div>
+          <div class="risk-cell">Level</div>
+          <div class="risk-cell">Impact</div>
+          <div class="risk-cell">Mitigation</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-cell">Paper price spike (primary cost at 65%)</div>
+          <div class="risk-cell"><span class="risk-badge risk-high">High</span></div>
+          <div class="risk-cell">Margin compression</div>
+          <div class="risk-cell">Maintain 45–60 day buffer stock; 3-supplier price negotiations; seasonal buying</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-cell">Slow initial sales / market entry</div>
+          <div class="risk-cell"><span class="risk-badge risk-med">Med</span></div>
+          <div class="risk-cell">Delayed profit start</div>
+          <div class="risk-cell">Pre-sell to schools before launch; ₹2L working capital covers 3-month ramp</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-cell">Chinese import price dumping</div>
+          <div class="risk-cell"><span class="risk-badge risk-med">Med</span></div>
+          <div class="risk-cell">Price pressure in retail</div>
+          <div class="risk-cell">Focus on institutional/tender segment (not retail); "Made in India" preference</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-cell">Machinery breakdown</div>
+          <div class="risk-cell"><span class="risk-badge risk-low">Low</span></div>
+          <div class="risk-cell">1–3 days downtime</div>
+          <div class="risk-cell">AMC (annual maintenance contract); spare parts stock; local technician tie-up</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-cell">Power cuts / 3-phase disruption</div>
+          <div class="risk-cell"><span class="risk-badge risk-low">Low</span></div>
+          <div class="risk-cell">Production halt</div>
+          <div class="risk-cell">JIADA has dedicated industrial power; portable generator backup for critical machines</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-cell">Key customer default (payment risk)</div>
+          <div class="risk-cell"><span class="risk-badge risk-med">Med</span></div>
+          <div class="risk-cell">Cash flow gap</div>
+          <div class="risk-cell">Max 30-day credit; advance payment for custom orders; avoid large single-buyer dependence</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-cell">Regulatory / GST changes</div>
+          <div class="risk-cell"><span class="risk-badge risk-low">Low</span></div>
+          <div class="risk-cell">Compliance cost</div>
+          <div class="risk-cell">ZK Ventures already GST-registered with active filing history; CA on retainer</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-cell">Labour turnover / skill gap</div>
+          <div class="risk-cell"><span class="risk-badge risk-low">Low</span></div>
+          <div class="risk-cell">Training downtime</div>
+          <div class="risk-cell">Semi-auto machines are simple; cross-train 2 workers on each machine; above-market wages to retain</div>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <div class="callout-title">Overall Risk Profile: Low–Moderate</div>
+        <p>Notebook manufacturing has no process safety risks, no environmental permits required (no chemical inputs), no significant technology risk, and no single-customer dependence. The business model is asset-light, labour-light, and scalable. The highest risk — paper price volatility — is manageable through buffer stock strategy. This is structurally one of the safest MSME manufacturing categories.</p>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-ROADMAP ── -->
+    <div class="doc-section" id="sec-roadmap">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 18">Implementation Roadmap<div class="rule-accent"></div></div>
+
+      <p>From capital deployment to stable profitability in 6 months. This is a realistic, step-by-step plan with clear milestones for both the Promoter and international investors to track.</p>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Month 1 · Funding & Legal</div>
+          <div class="tl-title">Agreement Signing + Capital Deployment</div>
+          <div class="tl-body">international partners sign the Profit-Sharing Agreement; transfer ₹6L each to ZK Ventures account; JIADA shed identification and booking; update Udyam registration to include notebook manufacturing; open dedicated business bank sub-account for notebook unit.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Month 2 · Infrastructure</div>
+          <div class="tl-title">Factory Setup + Machinery Installation</div>
+          <div class="tl-body">JIADA shed taken possession; 3-phase electrical installation; machinery procurement (ruling, cutting, stitching, trimming, pasting machines); branding and cover design commissioned; packaging material ordered; hiring of 4 core workers.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Month 3 · Trial Production</div>
+          <div class="tl-title">First Sample Batches + School Visits</div>
+          <div class="tl-body">First 5,000 sample notebooks produced; ZK team visits 25 schools in Jamshedpur/Dhanbad belt with samples and pricing sheets; JEPC tender registration submitted; PMEGP application filed; first IndiaMart listing with product catalog.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Month 4–5 · First Orders</div>
+          <div class="tl-title">Commercial Launch + First Revenue</div>
+          <div class="tl-body">First school and wholesale orders fulfilled; minimum 10,000–15,000 units/month target; stationery wholesaler distributor tied up in Jamshedpur and Ranchi; first monthly P&L report to international partners; first profit disbursement (if profitability achieved).</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Month 6–9 · Scale-Up</div>
+          <div class="tl-title">Full Production Capacity + Bihar Entry</div>
+          <div class="tl-body">Production at 1,500–2,000/day; Dhanbad, Bokaro, Chaibasa markets opened; Bihar stationery wholesale distributor identified (Chapra/Muzaffarpur); first government tender bid submitted; spiral binding machine added for corporate notebooks; GeM registration active.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Month 12–18 · Consolidation</div>
+          <div class="tl-title">Brand Building + Export Preparation</div>
+          <div class="tl-body">Own brand established in Jharkhand + Eastern Bihar; consistent ₹1.2–1.8L monthly profit; EEPC/RCMC registration; first export inquiry follow-up; corporate stationery supply (custom diaries) to TATA ancillary units; review second machinery expansion plan.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Year 2–3 · Growth</div>
+          <div class="tl-title">Export Launch + International Partner Exit Approaching</div>
+          <div class="tl-body">First Gulf export shipment (UAE/Saudi); BiHar BIADA unit or depot under consideration; international partners approaching 3× return — exit discussions begin; promoter retains 100% of growing, profitable enterprise post-exit.</div>
+        </div>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+    <!-- ── SEC-CONTACT ── -->
+    <div class="doc-section" id="sec-contact">
+      <div class="section-inner">
+
+      <div class="section-title" data-num="SECTION 19">Contact & Next Steps<div class="rule-accent"></div></div>
+
+      <p>ZK Ventures welcomes conversation with serious prospective international partners. This is a time-limited opportunity — only two positions are available, and once both are filled, the arrangement is closed for this unit.</p>
+
+      <div class="terms-block">
+        <div class="terms-header">
+          Promoter Contact Details
+          <span class="th-sub">ZK Ventures · Jamshedpur, India</span>
+        </div>
+        <div class="terms-body">
+          <div class="term-row">
+            <div class="term-key">Promoter</div>
+            <div class="term-val"><strong>ZK Ventures</strong> — Promoter / Managing Partner</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Location</div>
+            <div class="term-val">Jamshedpur — East India (PIN 831xxx)</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Business Registration</div>
+            <div class="term-val">GST Registered · Udyam MSME · ZK Ventures</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">WhatsApp</div>
+            <div class="term-val"><strong>[To be filled by ZK Ventures]</strong> — Primary contact for investors</div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Email</div>
+            <div class="term-val"><strong>[To be filled by ZK Ventures]</strong></div>
+          </div>
+          <div class="term-row">
+            <div class="term-key">Bank Account</div>
+            <div class="term-val">Current Account — ZK Ventures (details shared privately post-NDA)</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>What Happens Next</h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 1</div>
+          <div class="tl-title">WhatsApp / Call to Express Interest</div>
+          <div class="tl-body">Reach out to ZK Ventures via WhatsApp with any questions. A short Q&A session (30 minutes, video call available) will be arranged to address all investor queries.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 2</div>
+          <div class="tl-title">Agreement Review & Signing</div>
+          <div class="tl-body">The formal Profit-Sharing Agreement (4–5 pages) is drafted and shared for review. Legal counsel on either side is welcome. Agreement signed on stamp paper and notarised in Jamshedpur; scanned copy sent to partner digitally and original dispatched by courier.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 3</div>
+          <div class="tl-title">Fund Transfer & Acknowledgement</div>
+          <div class="tl-body">₹6 lakh transferred to ZK Ventures account. Formal receipt issued within 24 hours. Implementation clock starts.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-phase">Step 4</div>
+          <div class="tl-title">Monthly Updates Begin</div>
+          <div class="tl-body">From Month 1, you receive a monthly update by the 5th of each month — production, sales, expenses, profit. You are fully informed at every step.</div>
+        </div>
+      </div>
+
+      <div class="callout kraft">
+        <div class="callout-title">A Note from ZK Ventures</div>
+        <p>This is not a speculative venture. Notebook manufacturing is India's most time-tested MSME business — low risk, steady demand, and simple operations. ZK Ventures brings operational experience, local network, and full compliance infrastructure to this unit. We seek partners who share our long-term orientation and trust in India's enduring education-driven stationery market. <em>Jazakallah khayran</em> for considering this opportunity.</p>
+      </div>
+
+      <div class="callout" style="text-align:center;margin-top:20px;">
+        <p style="font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--spine);margin:0;">
+          "Every notebook is a blank page of possibility.<br>Every investor is a partner in writing that story."
+        </p>
+        <p style="font-family:'Courier Prime',monospace;font-size:10px;color:var(--gray);margin-top:8px;">— ZK Ventures, Jamshedpur 2026</p>
+      </div>
+      <div class="back-to-index-wrap">
+        <a href="#sec-index" class="back-to-index">↩ &nbsp; Back to Index</a>
+      </div>
+      </div>
+    </div>
+
+  </div><!-- /notebook-wrap -->
+
+  <div class="page-footer">
+    <span><span class="pf-brand">ZK Ventures</span> · Paper Notebook Manufacturing · International Partner Proposal · 2026</span>
+    <span class="pf-conf">⬛ CONFIDENTIAL — DO NOT DISTRIBUTE</span>
+    <span>Jamshedpur, India</span>
+  </div>
+
+</div><!-- /app -->
+
+<script>
+  document.getElementById('pwInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPass();
+  });
+  function checkPass() {
+    const val = document.getElementById('pwInput').value.trim();
+    const err = document.getElementById('pwError');
+    if (val === 'pnbmu') {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+    } else {
+      err.textContent = '✗ Incorrect password. Please try again.';
+      document.getElementById('pwInput').value = '';
+      document.getElementById('pwInput').focus();
+      setTimeout(() => { err.textContent = ''; }, 3000);
+    }
+  }
+</script>
+</body>
+</html>
